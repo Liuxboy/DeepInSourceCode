@@ -15,6 +15,9 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Vector;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
 
 import org.omg.CORBA.DataInputStream;
 import org.omg.CORBA.DataOutputStream;
@@ -87,6 +90,17 @@ public class CommonClassSrcCode {
 	File file;
 	//4、基于网络的IO
 	Socket sckt;
+	
+	/**
+	 * 并发类 
+	 * java.util.concurrent
+	 * java.util.concurrent.comic
+	 * java.util.concurrent.locks
+	 **/
+	
+	Lock lk;
+	Condition cd;
+	ConcurrentHashMap<?, ?> chm;
 	
 	public static void main(String[] args) {
 		

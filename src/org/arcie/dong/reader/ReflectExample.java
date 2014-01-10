@@ -122,9 +122,6 @@ public class ReflectExample {
 
 	}
 
-	
-	
-	
 	/**
 	 * 是不是某个类的实例
 	 * 
@@ -145,5 +142,13 @@ public class ReflectExample {
 	 */
 	public Object getByArray(Object array, int index) {
 		return Array.get(array, index);
+	}
+	
+	
+	public static void main(String[] args) {
+		ReflectExample reft = new ReflectExample();
+		System.out.println(reft.getClass().getSimpleName());	//只是类名，不包含包名
+		System.out.println(reft.getClass().getName());			//包含包名的类名					
+		System.out.println(reft.getClass().getCanonicalName());	//包含包名的类名
 	}
 }
