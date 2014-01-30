@@ -10,11 +10,6 @@ import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
 import java.net.Socket;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -55,15 +50,6 @@ public class CommonClassSrcCode {
 	Boolean bl;
 	//4¡¢×Ö·ûÐÍ
 	Character chat;
-	
-	/**
-	 * ÈÝÆ÷ÀàCollection
-	 */
-	Collection<?> cl;
-	List<?> list = null;
-	Vector<?> vector = null;
-	HashMap<?, ?> hm;
-	Hashtable<?, ?> ht;
 	
 	/**
 	 * IOÀà
