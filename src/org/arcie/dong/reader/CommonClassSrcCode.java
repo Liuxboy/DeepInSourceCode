@@ -30,6 +30,8 @@ public class CommonClassSrcCode {
 	String str;
 	StringBuffer strbf;
 	System sys;
+	Object o;
+	Class<?> c;
 	
 	/**
 	 * 数据类型包装类
@@ -89,7 +91,6 @@ public class CommonClassSrcCode {
 	ConcurrentHashMap<?, ?> chm;
 	
 	public static void main(String[] args) {
-		
 		System.out.println("Today is new day!");
 	}
 }
