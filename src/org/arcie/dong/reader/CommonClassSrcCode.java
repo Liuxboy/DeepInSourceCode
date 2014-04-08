@@ -32,7 +32,7 @@ public class CommonClassSrcCode {
 	System sys;
 	Object o;
 	Class<?> c;
-	
+	ClassLoader cl;
 	/**
 	 * 数据类型包装类
 	 */

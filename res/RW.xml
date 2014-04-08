@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rwInfo>
+	<module id="21">
+		<name>oa</name>
+		<value>1</value>
+		<descript>第1个模块的描述</descript>
+	</module>
+	<module id="22">
+		<name>ob</name>
+		<value>2</value>
+		<descript>第2个模块的描述</descript>
+	</module>
+	<module id="23">
+		<name>oc</name>
+		<value>3</value>
+		<descript>第3个模块的描述</descript>
+	</module>
+	<module id="24">
+		<name>od</name>
+		<value>4</value>
+		<descript>第4个模块的描述</descript>
+	</module>
+	<module id="25">
+		<name>oe</name>
+		<value>5</value>
+		<descript>第5个模块的描述</descript>
+	</module>
+</rwInfo>
