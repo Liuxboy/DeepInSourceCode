@@ -3,6 +3,7 @@ package org.arcie.dong.reader;
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**参考Michael Lee from web
@@ -147,8 +148,71 @@ public class ReflectExample {
 	
 	public static void main(String[] args) {
 		ReflectExample reft = new ReflectExample();
+		ReflectClass[] rc = {
+								new ReflectClass(23L, "张三"), 
+								new ReflectClass(12L, "xiaoming"),
+								new ReflectClass(9L, "Anton")
+							};
+		String name;
+		for(int i = 0; i < rc.length; i++){
+			System.out.println(rc[i].id);
+			try {
+				Class<?> classType = rc[i].getClass();
+				
+				Field field = classType.getDeclaredField("name");
+				field.setAccessible(true);	//设置私有域可见
+				System.out.println(field.get(rc[i]));//可访问
+				
+				Method method = classType.getDeclaredMethod("getInfo",Long.class,String.class);
+				method.setAccessible(true);	//设置私有域可见
+				method.invoke(classType,new Long(25),"zhangshanfeng");//可访问
+			} catch (NoSuchFieldException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (RuntimeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchMethodException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		System.out.println(reft.getClass().getSimpleName());	//只是类名，不包含包名
 		System.out.println(reft.getClass().getName());			//包含包名的类名					
 		System.out.println(reft.getClass().getCanonicalName());	//包含包名的类名
+	}
+}
+
+//普通类
+class ReflectClass{	
+	public Long id;
+	private String name;		//私有域
+	/**
+	 * @param id
+	 * @param name
+	 */
+	public ReflectClass(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+	/**
+	 * 私有方法
+	 * @param id
+	 * @param name
+	 * @return
+	 */
+	@SuppressWarnings("unused")
+	private String getInfo(Long id, String name){	//私有方法
+		return id+"-"+name;
 	}
 }
