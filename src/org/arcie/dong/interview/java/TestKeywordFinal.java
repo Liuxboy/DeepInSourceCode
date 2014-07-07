@@ -1,11 +1,11 @@
 package org.arcie.dong.interview.java;
 /**
- * @author Áõ´º¶«
+ * @author åˆ˜æ˜¥ä¸œ
  * @version 0.1
- * @time 2014Äê4ÔÂ1ÈÕÉÏÎç10:56:35
+ * @time 2014å¹´4æœˆ1æ—¥ä¸Šåˆ10:56:35
  */
 public class TestKeywordFinal extends Test {
-	//public  final TestKeywordFinal() { //Constructor of TestKeywordFinal£¬¹¹Ôì·½·¨²»ÄÜÎªfinalĞÍ
+	//public  final TestKeywordFinal() { //Constructor of TestKeywordFinalï¼Œæ„é€ æ–¹æ³•ä¸èƒ½ä¸ºfinalå‹
 	public TestKeywordFinal(){
 		System.out.println("Test!"); 
 	}

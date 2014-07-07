@@ -11,48 +11,48 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 /**
- * @author Áõ´º¶«
+ * @author åˆ˜æ˜¥ä¸œ
  * @version 0.1
- * @time 2014Äê4ÔÂ8ÈÕÏÂÎç8:26:11
- * Ê¹ÓÃdom4j½âÎöxmlÎÄµµ
+ * @time 2014å¹´4æœˆ8æ—¥ä¸‹åˆ8:26:11
+ * ä½¿ç”¨dom4jè§£æxmlæ–‡æ¡£
  *
  */
 public class Dom4jParseXmlDemo {
 	
 	public void parseXml01(){
 		try{
-			//½«srcÏÂÃæµÄxml×ª»»ÎªÊäÈëÁ÷
+			//å°†srcä¸‹é¢çš„xmlè½¬æ¢ä¸ºè¾“å…¥æµ
 			//InputStream inputStream = new FileInputStream(new File("C:/Users/Anton/git/JavaDevelopmentKitsRead/res/Test1.xml")); 
-			//InputStream inputStream = this.getClass().getResourceAsStream("/module01.xml");//Ò²¿ÉÒÔ¸ù¾İÀàµÄ±àÒëÎÄ¼şÏà¶ÔÂ·¾¶È¥ÕÒxml
-			//´´½¨SAXReader¶ÁÈ¡Æ÷£¬×¨ÃÅÓÃÓÚ¶ÁÈ¡xml
+			//InputStream inputStream = this.getClass().getResourceAsStream("/module01.xml");//ä¹Ÿå¯ä»¥æ ¹æ®ç±»çš„ç¼–è¯‘æ–‡ä»¶ç›¸å¯¹è·¯å¾„å»æ‰¾xml
+			//åˆ›å»ºSAXReaderè¯»å–å™¨ï¼Œä¸“é—¨ç”¨äºè¯»å–xml
             SAXReader saxReader = new SAXReader();
-            //¸ù¾İsaxReaderµÄreadÖØĞ´·½·¨¿ÉÖª£¬¼È¿ÉÒÔÍ¨¹ıinputStreamÊäÈëÁ÷À´¶ÁÈ¡£¬Ò²¿ÉÒÔÍ¨¹ıfile¶ÔÏóÀ´¶ÁÈ¡ 
+            //æ ¹æ®saxReaderçš„readé‡å†™æ–¹æ³•å¯çŸ¥ï¼Œæ—¢å¯ä»¥é€šè¿‡inputStreamè¾“å…¥æµæ¥è¯»å–ï¼Œä¹Ÿå¯ä»¥é€šè¿‡fileå¯¹è±¡æ¥è¯»å– 
             //Document document = saxReader.read(inputStream);  
-            Document document = saxReader.read(new File("C:/Users/Anton/git/JavaDevelopmentKitsRead/res/Test1.xml"));//±ØĞëÖ¸¶¨ÎÄ¼şµÄ¾ø¶ÔÂ·¾¶
-            //ÁíÍâ»¹¿ÉÒÔÊ¹ÓÃDocumentHelperÌá¹©µÄxml×ª»»Æ÷Ò²ÊÇ¿ÉÒÔµÄ¡£
-            //Document document = DocumentHelper.parseText("<?xml version=\"1.0\" encoding=\"UTF-8\"?><modules id=\"123\"><module> Õâ¸öÊÇmodule±êÇ©µÄÎÄ±¾ĞÅÏ¢</module></modules>");
+            Document document = saxReader.read(new File("C:/Users/Anton/git/JavaDevelopmentKitsRead/res/Test1.xml"));//å¿…é¡»æŒ‡å®šæ–‡ä»¶çš„ç»å¯¹è·¯å¾„
+            //å¦å¤–è¿˜å¯ä»¥ä½¿ç”¨DocumentHelperæä¾›çš„xmlè½¬æ¢å™¨ä¹Ÿæ˜¯å¯ä»¥çš„ã€‚
+            //Document document = DocumentHelper.parseText("<?xml version=\"1.0\" encoding=\"UTF-8\"?><modules id=\"123\"><module> è¿™ä¸ªæ˜¯moduleæ ‡ç­¾çš„æ–‡æœ¬ä¿¡æ¯</module></modules>");
             
-            //»ñÈ¡¸ù½Úµã¶ÔÏó
+            //è·å–æ ¹èŠ‚ç‚¹å¯¹è±¡
             Element rootElement = document.getRootElement();  
-            System.out.println("¸ù½ÚµãÃû³Æ£º" + rootElement.getName());//»ñÈ¡½ÚµãµÄÃû³Æ
-            System.out.println("¸ù½ÚµãÓĞ¶àÉÙÊôĞÔ£º" + rootElement.attributeCount());//»ñÈ¡½ÚµãÊôĞÔÊıÄ¿
-            System.out.println("¸ù½ÚµãidÊôĞÔµÄÖµ£º" + rootElement.attributeValue("id"));//»ñÈ¡½ÚµãµÄÊôĞÔidµÄÖµ
-            System.out.println("¸ù½ÚµãÄÚÎÄ±¾£º" + rootElement.getText());//Èç¹ûÔªËØÓĞ×Ó½ÚµãÔò·µ»Ø¿Õ×Ö·û´®£¬·ñÔò·µ»Ø½ÚµãÄÚµÄÎÄ±¾
-            //rootElement.getText() Ö®ËùÒÔ»á»»ĞĞÊÇÒòÎª ±êÇ©Óë±êÇ©Ö®¼äÊ¹ÓÃÁËtab¼üºÍ»»ĞĞ·û²¼¾Ö£¬Õâ¸öÒ²ËãÊÇÎÄ±¾ËùÒÔÏÔÊ¾³öÀ´»»ĞĞµÄĞ§¹û¡£
-            System.out.println("¸ù½ÚµãÄÚÎÄ±¾(1)£º" + rootElement.getTextTrim());//È¥µôµÄÊÇ±êÇ©Óë±êÇ©Ö®¼äµÄtab¼üºÍ»»ĞĞ·ûµÈµÈ£¬²»ÊÇÄÚÈİÇ°ºóµÄ¿Õ¸ñ
-            System.out.println("¸ù½Úµã×Ó½ÚµãÎÄ±¾ÄÚÈİ£º" + rootElement.getStringValue()); //·µ»Øµ±Ç°½Úµãµİ¹éËùÓĞ×Ó½ÚµãµÄÎÄ±¾ĞÅÏ¢¡£
+            System.out.println("æ ¹èŠ‚ç‚¹åç§°ï¼š" + rootElement.getName());//è·å–èŠ‚ç‚¹çš„åç§°
+            System.out.println("æ ¹èŠ‚ç‚¹æœ‰å¤šå°‘å±æ€§ï¼š" + rootElement.attributeCount());//è·å–èŠ‚ç‚¹å±æ€§æ•°ç›®
+            System.out.println("æ ¹èŠ‚ç‚¹idå±æ€§çš„å€¼ï¼š" + rootElement.attributeValue("id"));//è·å–èŠ‚ç‚¹çš„å±æ€§idçš„å€¼
+            System.out.println("æ ¹èŠ‚ç‚¹å†…æ–‡æœ¬ï¼š" + rootElement.getText());//å¦‚æœå…ƒç´ æœ‰å­èŠ‚ç‚¹åˆ™è¿”å›ç©ºå­—ç¬¦ä¸²ï¼Œå¦åˆ™è¿”å›èŠ‚ç‚¹å†…çš„æ–‡æœ¬
+            //rootElement.getText() ä¹‹æ‰€ä»¥ä¼šæ¢è¡Œæ˜¯å› ä¸º æ ‡ç­¾ä¸æ ‡ç­¾ä¹‹é—´ä½¿ç”¨äº†tabé”®å’Œæ¢è¡Œç¬¦å¸ƒå±€ï¼Œè¿™ä¸ªä¹Ÿç®—æ˜¯æ–‡æœ¬æ‰€ä»¥æ˜¾ç¤ºå‡ºæ¥æ¢è¡Œçš„æ•ˆæœã€‚
+            System.out.println("æ ¹èŠ‚ç‚¹å†…æ–‡æœ¬(1)ï¼š" + rootElement.getTextTrim());//å»æ‰çš„æ˜¯æ ‡ç­¾ä¸æ ‡ç­¾ä¹‹é—´çš„tabé”®å’Œæ¢è¡Œç¬¦ç­‰ç­‰ï¼Œä¸æ˜¯å†…å®¹å‰åçš„ç©ºæ ¼
+            System.out.println("æ ¹èŠ‚ç‚¹å­èŠ‚ç‚¹æ–‡æœ¬å†…å®¹ï¼š" + rootElement.getStringValue()); //è¿”å›å½“å‰èŠ‚ç‚¹é€’å½’æ‰€æœ‰å­èŠ‚ç‚¹çš„æ–‡æœ¬ä¿¡æ¯ã€‚
             
-            //»ñÈ¡×Ó½Úµã
+            //è·å–å­èŠ‚ç‚¹
             Element element = rootElement.element("module");
             if(element != null){
-            	System.out.println("×Ó½ÚµãµÄÎÄ±¾£º" + element.getText());//ÒòÎª×Ó½ÚµãºÍ¸ù½Úµã¶¼ÊÇElement¶ÔÏóËùÒÔËüÃÇµÄ²Ù×÷·½Ê½¶¼ÊÇÏàÍ¬µÄ
+            	System.out.println("å­èŠ‚ç‚¹çš„æ–‡æœ¬ï¼š" + element.getText());//å› ä¸ºå­èŠ‚ç‚¹å’Œæ ¹èŠ‚ç‚¹éƒ½æ˜¯Elementå¯¹è±¡æ‰€ä»¥å®ƒä»¬çš„æ“ä½œæ–¹å¼éƒ½æ˜¯ç›¸åŒçš„
             }
-            //µ«ÊÇÓĞĞ©Çé¿öxml±È½Ï¸´ÔÓ£¬¹æ·¶²»Í³Ò»£¬Ä³¸ö½Úµã²»´æÔÚÖ±½Ójava.lang.NullPointerException£¬ËùÒÔ»ñÈ¡µ½element¶ÔÏóÖ®ºóÒªÏÈÅĞ¶ÏÒ»ÏÂÊÇ·ñÎª¿Õ
+            //ä½†æ˜¯æœ‰äº›æƒ…å†µxmlæ¯”è¾ƒå¤æ‚ï¼Œè§„èŒƒä¸ç»Ÿä¸€ï¼ŒæŸä¸ªèŠ‚ç‚¹ä¸å­˜åœ¨ç›´æ¥java.lang.NullPointerExceptionï¼Œæ‰€ä»¥è·å–åˆ°elementå¯¹è±¡ä¹‹åè¦å…ˆåˆ¤æ–­ä¸€ä¸‹æ˜¯å¦ä¸ºç©º
             
-            rootElement.setName("root");//Ö§³ÖĞŞ¸Ä½ÚµãÃû³Æ
-            System.out.println("¸ù½ÚµãĞŞ¸ÄÖ®ºóµÄÃû³Æ£º" + rootElement.getName());
-            rootElement.setText("text"); //Í¬ÑùĞŞ¸Ä±êÇ©ÄÚµÄÎÄ±¾Ò²Ò»Ñù
-            System.out.println("¸ù½ÚµãĞŞ¸ÄÖ®ºóµÄÎÄ±¾£º" + rootElement.getText());
+            rootElement.setName("root");//æ”¯æŒä¿®æ”¹èŠ‚ç‚¹åç§°
+            System.out.println("æ ¹èŠ‚ç‚¹ä¿®æ”¹ä¹‹åçš„åç§°ï¼š" + rootElement.getName());
+            rootElement.setText("text"); //åŒæ ·ä¿®æ”¹æ ‡ç­¾å†…çš„æ–‡æœ¬ä¹Ÿä¸€æ ·
+            System.out.println("æ ¹èŠ‚ç‚¹ä¿®æ”¹ä¹‹åçš„æ–‡æœ¬ï¼š" + rootElement.getText());
         } catch (Exception e) {  
             e.printStackTrace();  
         }  
@@ -61,19 +61,19 @@ public class Dom4jParseXmlDemo {
 	
 	public void parseXml02(){
 		try{
-			//½«srcÏÂÃæµÄxml×ª»»ÎªÊäÈëÁ÷
+			//å°†srcä¸‹é¢çš„xmlè½¬æ¢ä¸ºè¾“å…¥æµ
 			InputStream inputStream = new FileInputStream("C:/Users/Anton/git/JavaDevelopmentKitsRead/res/Test2.xml");
-			//´´½¨SAXReader¶ÁÈ¡Æ÷£¬×¨ÃÅÓÃÓÚ¶ÁÈ¡xml
+			//åˆ›å»ºSAXReaderè¯»å–å™¨ï¼Œä¸“é—¨ç”¨äºè¯»å–xml
             SAXReader saxReader = new SAXReader();
-            //¸ù¾İsaxReaderµÄreadÖØĞ´·½·¨¿ÉÖª£¬¼È¿ÉÒÔÍ¨¹ıinputStreamÊäÈëÁ÷À´¶ÁÈ¡£¬Ò²¿ÉÒÔÍ¨¹ıfile¶ÔÏóÀ´¶ÁÈ¡
+            //æ ¹æ®saxReaderçš„readé‡å†™æ–¹æ³•å¯çŸ¥ï¼Œæ—¢å¯ä»¥é€šè¿‡inputStreamè¾“å…¥æµæ¥è¯»å–ï¼Œä¹Ÿå¯ä»¥é€šè¿‡fileå¯¹è±¡æ¥è¯»å–
             Document document = saxReader.read(inputStream);
             
             Element rootElement = document.getRootElement();
 	        @SuppressWarnings("unchecked")
 			Iterator<Element> modulesIterator = rootElement.elements("module").iterator();
-	        //rootElement.element("name");»ñÈ¡Ä³Ò»¸ö×ÓÔªËØ
-	        //rootElement.elements("name");»ñÈ¡¸ù½ÚµãÏÂ×ÓÔªËØmoudule½ÚµãµÄ¼¯ºÏ£¬·µ»ØList¼¯ºÏÀàĞÍ
-	        //rootElement.elements("module").iterator();°Ñ·µ»ØµÄlist¼¯ºÏÀïÃæÃ¿Ò»¸öÔªËØµü´ú×Ó½Úµã£¬È«²¿·µ»Øµ½Ò»¸öIterator¼¯ºÏÖĞ
+	        //rootElement.element("name");è·å–æŸä¸€ä¸ªå­å…ƒç´ 
+	        //rootElement.elements("name");è·å–æ ¹èŠ‚ç‚¹ä¸‹å­å…ƒç´ mouduleèŠ‚ç‚¹çš„é›†åˆï¼Œè¿”å›Listé›†åˆç±»å‹
+	        //rootElement.elements("module").iterator();æŠŠè¿”å›çš„listé›†åˆé‡Œé¢æ¯ä¸€ä¸ªå…ƒç´ è¿­ä»£å­èŠ‚ç‚¹ï¼Œå…¨éƒ¨è¿”å›åˆ°ä¸€ä¸ªIteratoré›†åˆä¸­
 	        while(modulesIterator.hasNext()){
 	            Element moduleElement = modulesIterator.next();
 	            Element nameElement = moduleElement.element("name");
@@ -89,41 +89,41 @@ public class Dom4jParseXmlDemo {
 	}	
 	public void parseXml03(){
 		try{
-			//½«srcÏÂÃæµÄxml×ª»»ÎªÊäÈëÁ÷
+			//å°†srcä¸‹é¢çš„xmlè½¬æ¢ä¸ºè¾“å…¥æµ
 			InputStream inputStream =  new FileInputStream("C:/Users/Anton/git/JavaDevelopmentKitsRead/res/Test3.xml");
-			//´´½¨SAXReader¶ÁÈ¡Æ÷£¬×¨ÃÅÓÃÓÚ¶ÁÈ¡xml
+			//åˆ›å»ºSAXReaderè¯»å–å™¨ï¼Œä¸“é—¨ç”¨äºè¯»å–xml
             SAXReader saxReader = new SAXReader();
-            //¸ù¾İsaxReaderµÄreadÖØĞ´·½·¨¿ÉÖª£¬¼È¿ÉÒÔÍ¨¹ıinputStreamÊäÈëÁ÷À´¶ÁÈ¡£¬Ò²¿ÉÒÔÍ¨¹ıfile¶ÔÏóÀ´¶ÁÈ¡
+            //æ ¹æ®saxReaderçš„readé‡å†™æ–¹æ³•å¯çŸ¥ï¼Œæ—¢å¯ä»¥é€šè¿‡inputStreamè¾“å…¥æµæ¥è¯»å–ï¼Œä¹Ÿå¯ä»¥é€šè¿‡fileå¯¹è±¡æ¥è¯»å–
             Document document = saxReader.read(inputStream);
             
             Element rootElement = document.getRootElement();
             if(rootElement.elements("module") != null ){
-            	//ÒòÎªµÚÒ»¸ömodule±êÇ©Ö»ÓĞÄÚÈİÃ»ÓĞ×Ó½Úµã£¬Ö±½Ó.iterator()¾Íjava.lang.NullPointerExceptionÁË, ËùÒÔĞèÒª·Ö¿ªÊµÏÖ
+            	//å› ä¸ºç¬¬ä¸€ä¸ªmoduleæ ‡ç­¾åªæœ‰å†…å®¹æ²¡æœ‰å­èŠ‚ç‚¹ï¼Œç›´æ¥.iterator()å°±java.lang.NullPointerExceptionäº†, æ‰€ä»¥éœ€è¦åˆ†å¼€å®ç°
             	@SuppressWarnings("unchecked")
 				List<Element> elementList = rootElement.elements("module");
             	for (Element element : elementList) {
             		if(!element.getTextTrim().equals("")){
-            			System.out.println("¡¾1¡¿" + element.getTextTrim());
+            			System.out.println("ã€1ã€‘" + element.getTextTrim());
             		}else{
 			            Element nameElement = element.element("name");
-			            System.out.println("     ¡¾2¡¿" + nameElement.getName() + ":" + nameElement.getText());
+			            System.out.println("     ã€2ã€‘" + nameElement.getName() + ":" + nameElement.getText());
 			            Element valueElement = element.element("value");
-			            System.out.println("     ¡¾2¡¿" + valueElement.getName() + ":" + valueElement.getText());
+			            System.out.println("     ã€2ã€‘" + valueElement.getName() + ":" + valueElement.getText());
 			            Element descriptElement = element.element("descript");
-			            System.out.println("     ¡¾2¡¿" + descriptElement.getName() + ":" + descriptElement.getText());
+			            System.out.println("     ã€2ã€‘" + descriptElement.getName() + ":" + descriptElement.getText());
             			
             			@SuppressWarnings("unchecked")
 						List<Element> subElementList = element.elements("module");
                     	for (Element subElement : subElementList) {
                     		if(!subElement.getTextTrim().equals("")){
-                    			System.out.println("         ¡¾3¡¿" + subElement.getTextTrim());
+                    			System.out.println("         ã€3ã€‘" + subElement.getTextTrim());
                     		}else{
         			            Element subnameElement = subElement.element("name");
-        			            System.out.println("         ¡¾3¡¿" + subnameElement.getName() + ":" + subnameElement.getText());
+        			            System.out.println("         ã€3ã€‘" + subnameElement.getName() + ":" + subnameElement.getText());
         			            Element subvalueElement = subElement.element("value");
-        			            System.out.println("         ¡¾3¡¿" + subvalueElement.getName() + ":" + subvalueElement.getText());
+        			            System.out.println("         ã€3ã€‘" + subvalueElement.getName() + ":" + subvalueElement.getText());
         			            Element subdescriptElement = subElement.element("descript");
-        			            System.out.println("         ¡¾3¡¿" + subdescriptElement.getName() + ":" + subdescriptElement.getText());
+        			            System.out.println("         ã€3ã€‘" + subdescriptElement.getName() + ":" + subdescriptElement.getText());
                     		}
                     	}
             		}
@@ -136,28 +136,28 @@ public class Dom4jParseXmlDemo {
 	
 	public void parseXml04(){
 		try{
-			//½«srcÏÂÃæµÄxml×ª»»ÎªÊäÈëÁ÷
+			//å°†srcä¸‹é¢çš„xmlè½¬æ¢ä¸ºè¾“å…¥æµ
 			InputStream inputStream =  new FileInputStream("C:/Users/Anton/git/JavaDevelopmentKitsRead/res/RW.xml");
-			//´´½¨SAXReader¶ÁÈ¡Æ÷£¬×¨ÃÅÓÃÓÚ¶ÁÈ¡xml
+			//åˆ›å»ºSAXReaderè¯»å–å™¨ï¼Œä¸“é—¨ç”¨äºè¯»å–xml
             SAXReader saxReader = new SAXReader();
-            //¸ù¾İsaxReaderµÄreadÖØĞ´·½·¨¿ÉÖª£¬¼È¿ÉÒÔÍ¨¹ıinputStreamÊäÈëÁ÷À´¶ÁÈ¡£¬Ò²¿ÉÒÔÍ¨¹ıfile¶ÔÏóÀ´¶ÁÈ¡
+            //æ ¹æ®saxReaderçš„readé‡å†™æ–¹æ³•å¯çŸ¥ï¼Œæ—¢å¯ä»¥é€šè¿‡inputStreamè¾“å…¥æµæ¥è¯»å–ï¼Œä¹Ÿå¯ä»¥é€šè¿‡fileå¯¹è±¡æ¥è¯»å–
             Document document = saxReader.read(inputStream);
             
             Element rootElement = document.getRootElement();
             if(rootElement.elements("module") != null ){
-            	//ÒòÎªµÚÒ»¸ömodule±êÇ©Ö»ÓĞÄÚÈİÃ»ÓĞ×Ó½Úµã£¬Ö±½Ó.iterator()¾Íjava.lang.NullPointerExceptionÁË, ËùÒÔĞèÒª·Ö¿ªÊµÏÖ
+            	//å› ä¸ºç¬¬ä¸€ä¸ªmoduleæ ‡ç­¾åªæœ‰å†…å®¹æ²¡æœ‰å­èŠ‚ç‚¹ï¼Œç›´æ¥.iterator()å°±java.lang.NullPointerExceptionäº†, æ‰€ä»¥éœ€è¦åˆ†å¼€å®ç°
             	@SuppressWarnings("unchecked")
 				List<Element> elementList = rootElement.elements("module");
             	for (Element element : elementList) {
             		if(!element.getTextTrim().equals("")){
-            			System.out.println("¡¾1¡¿" + element.getTextTrim());
+            			System.out.println("ã€1ã€‘" + element.getTextTrim());
             		}else{
 			            Element nameElement = element.element("name");
-			            System.out.println("¡¾2¡¿" + nameElement.getName() + ":" + nameElement.getText());
+			            System.out.println("ã€2ã€‘" + nameElement.getName() + ":" + nameElement.getText());
 			            Element valueElement = element.element("value");
-			            System.out.println("¡¾2¡¿" + valueElement.getName() + ":" + valueElement.getText());
+			            System.out.println("ã€2ã€‘" + valueElement.getName() + ":" + valueElement.getText());
 			            Element descriptElement = element.element("descript");
-			            System.out.println("¡¾2¡¿" + descriptElement.getName() + ":" + descriptElement.getText());
+			            System.out.println("ã€2ã€‘" + descriptElement.getName() + ":" + descriptElement.getText());
             		}
             	}
             	@SuppressWarnings("unchecked")
@@ -165,11 +165,11 @@ public class Dom4jParseXmlDemo {
             	 while(modulesIterator.hasNext()){
      	            Element moduleElement = modulesIterator.next();
      	            Element nameElement = moduleElement.element("name");
-     	            System.out.println("¡¾3¡¿"+ nameElement.getName() + ":" + nameElement.getText());
+     	            System.out.println("ã€3ã€‘"+ nameElement.getName() + ":" + nameElement.getText());
      	            Element valueElement = moduleElement.element("value");
-     	            System.out.println("¡¾3¡¿"+ valueElement.getName() + ":" + valueElement.getText());
+     	            System.out.println("ã€3ã€‘"+ valueElement.getName() + ":" + valueElement.getText());
      	            Element descriptElement = moduleElement.element("descript");
-     	            System.out.println("¡¾3¡¿"+ descriptElement.getName() + ":" + descriptElement.getText());
+     	            System.out.println("ã€3ã€‘"+ descriptElement.getName() + ":" + descriptElement.getText());
 				}
             }
 	    } catch (Exception e) {  
@@ -179,13 +179,13 @@ public class Dom4jParseXmlDemo {
 
 	public static void main(String[] args) {
 		Dom4jParseXmlDemo demo = new Dom4jParseXmlDemo();
-		System.out.println("-------------·½·¨1------------");
+		System.out.println("-------------æ–¹æ³•1------------");
 		demo.parseXml01();
-		System.out.println("-------------·½·¨2------------");
+		System.out.println("-------------æ–¹æ³•2------------");
 		demo.parseXml02();
-		System.out.println("-------------·½·¨3------------");
+		System.out.println("-------------æ–¹æ³•3------------");
 		demo.parseXml03();
-		System.out.println("-------------·½·¨4------------");
+		System.out.println("-------------æ–¹æ³•4------------");
 		demo.parseXml04();
 	}
 }

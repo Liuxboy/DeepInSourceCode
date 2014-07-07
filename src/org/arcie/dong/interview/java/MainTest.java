@@ -4,9 +4,9 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
- * @author Áõ´º¶«
+ * @author åˆ˜æ˜¥ä¸œ
  * @version 0.1
- * @time 2014Äê3ÔÂ16ÈÕÏÂÎç2:00:39
+ * @time 2014å¹´3æœˆ16æ—¥ä¸‹åˆ2:00:39
  * from URL:http://blog.csdn.net/lifetragedy/article/details/9751079
  * 
  * Q1: What if the main method is declared as private?
@@ -23,7 +23,7 @@ import java.util.Arrays;
  * 
  * Q5: What is the first argument of the String array in main method?
  * A5:  The String array is empty. It does not have any element. 
- * This is unlike C/C++£¨¶Á×÷plus plus) where the first element by default is the program name.
+ * This is unlike C/C++ï¼ˆè¯»ä½œplus plus) where the first element by default is the program name.
  * 
  * Q6: If I do not provide any arguments on the command line, then the String array of Main method will be empty or null?
  * A6:  It is empty. But not null.
@@ -55,7 +55,7 @@ public class MainTest {
 		
 	}
 	public boolean compareTwoArray(Object[] o1, Object[] o2){
-		Arrays.equals(o1, o2);//Á½¶ÔÏóÊı×é±È½Ï
+		Arrays.equals(o1, o2);//ä¸¤å¯¹è±¡æ•°ç»„æ¯”è¾ƒ
 		
 		
 		return false;

@@ -24,9 +24,9 @@ import org.omg.CORBA.DataOutputStream;
  *
  */
 public class CommonClassSrcCode {
-	//ÔÄ¶ÁJDKÖĞ³£¼ûÀàÔ´Âë
+	//é˜…è¯»JDKä¸­å¸¸è§ç±»æºç 
 	//System ClassLoader
-	//³£¼ûÀà
+	//å¸¸è§ç±»
 	String str;
 	StringBuffer strbf;
 	System sys;
@@ -34,27 +34,27 @@ public class CommonClassSrcCode {
 	Class<?> c;
 	ClassLoader cl;
 	/**
-	 * Êı¾İÀàĞÍ°ü×°Àà
+	 * æ•°æ®ç±»å‹åŒ…è£…ç±»
 	 */
-	//0¡¢¼ÆÊı
+	//0ã€è®¡æ•°
 	Number nb;
-	//1¡¢ÕûĞÍ
+	//1ã€æ•´å‹
 	Byte byt;
 	Short sht;
 	Integer inte;
 	Long lg;
 	
-	//2¡¢¸¡µãĞÍ
+	//2ã€æµ®ç‚¹å‹
 	Float fl;
 	Double db;
 	
-	//3¡¢Âß¼­ĞÍ
+	//3ã€é€»è¾‘å‹
 	Boolean bl;
-	//4¡¢×Ö·ûĞÍ
+	//4ã€å­—ç¬¦å‹
 	Character chat;
 	
 	/**
-	 * IOÀà
+	 * IOç±»
 	 */
 	DataInput dt;
 	DataInputStream dis;
@@ -63,24 +63,24 @@ public class CommonClassSrcCode {
 	DataOutputStream dos;
 	java.io.DataOutputStream jioDos;
 	
-	//1¡¢»ùÓÚ×Ö½ÚµÄIO
+	//1ã€åŸºäºå­—èŠ‚çš„IO
 	InputStream is;
 	InputStreamReader isr;
  
 	OutputStream os;
 	OutputStreamWriter osw;
 	
-	//2¡¢»ùÓÚ×Ö·ûµÄIO
+	//2ã€åŸºäºå­—ç¬¦çš„IO
 	Reader rd;
 	Writer wr;
 	
-	//3¡¢»ùÓÚ´ÅÅÌµÄIO
+	//3ã€åŸºäºç£ç›˜çš„IO
 	File file;
-	//4¡¢»ùÓÚÍøÂçµÄIO
+	//4ã€åŸºäºç½‘ç»œçš„IO
 	Socket sckt;
 	
 	/**
-	 * ²¢·¢Àà 
+	 * å¹¶å‘ç±» 
 	 * java.util.concurrent
 	 * java.util.concurrent.comic
 	 * java.util.concurrent.locks

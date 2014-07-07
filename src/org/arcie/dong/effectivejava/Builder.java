@@ -1,11 +1,11 @@
 package org.arcie.dong.effectivejava;
 /**
- * @author Áõ´º¶«
+ * @author åˆ˜æ˜¥ä¸œ
  * @version 
- * @time 2014Äê2ÔÂ1ÈÕÉÏÎç1:43:13
+ * @time 2014å¹´2æœˆ1æ—¥ä¸Šåˆ1:43:13
  */
 public class Builder {
-	//¹¹½¨Æ÷
+	//æ„å»ºå™¨
 }
 ///////////////////////////////////////////////////////////////////////////
 // Telescoping constructor pattern - does not scale well!

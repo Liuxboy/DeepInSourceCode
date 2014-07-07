@@ -9,14 +9,14 @@ import java.util.List;
 import java.util.Vector;
 
 /**
- * @author Áõ´º¶«
+ * @author åˆ˜æ˜¥ä¸œ
  * @version 
  * @param <E>
- * @time 2014Äê1ÔÂ30ÈÕÏÂÎç4:30:37
+ * @time 2014å¹´1æœˆ30æ—¥ä¸‹åˆ4:30:37
  */
 public class JavaCollectionFramework<E> {
 	/**
-	 * ÈİÆ÷ÀàCollection
+	 * å®¹å™¨ç±»Collection
 	 */
 	Collection<?> cl;
 	List<?> list = null;

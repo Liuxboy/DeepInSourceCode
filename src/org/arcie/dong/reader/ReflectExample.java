@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/**²Î¿¼Michael Lee from web
+/**å‚è€ƒMichael Lee from web
  * Java Reflection Cookbook
  * @author Michael Lee
  * @since 2006-8-23
@@ -15,10 +15,10 @@ import java.lang.reflect.Method;
 
 public class ReflectExample {
 	/**
-	 * µÃµ½Ä³¸ö¶ÔÏóµÄ¹«¹²ÊôĞÔ
+	 * å¾—åˆ°æŸä¸ªå¯¹è±¡çš„å…¬å…±å±æ€§
 	 * 
 	 * @param owner, fieldName
-	 * @return ¸ÃÊôĞÔ¶ÔÏó
+	 * @return è¯¥å±æ€§å¯¹è±¡
 	 * @throws Exception
 	 * 
 	 */
@@ -33,11 +33,11 @@ public class ReflectExample {
 	}
 
 	/**
-	 * µÃµ½Ä³ÀàµÄ¾²Ì¬¹«¹²ÊôĞÔ
+	 * å¾—åˆ°æŸç±»çš„é™æ€å…¬å…±å±æ€§
 	 * 
-	 * @param className ÀàÃû
-	 * @param fieldName ÊôĞÔÃû
-	 * @return ¸ÃÊôĞÔ¶ÔÏó
+	 * @param className ç±»å
+	 * @param fieldName å±æ€§å
+	 * @return è¯¥å±æ€§å¯¹è±¡
 	 * @throws Exception
 	 */
 	public Object getStaticProperty(String className, String fieldName)
@@ -52,12 +52,12 @@ public class ReflectExample {
 	}
 
 	/**
-	 * Ö´ĞĞÄ³¶ÔÏó·½·¨
+	 * æ‰§è¡ŒæŸå¯¹è±¡æ–¹æ³•
 	 * 
-	 * @param owner ¶ÔÏó
-	 * @param methodName ·½·¨Ãû
-	 * @param args ²ÎÊı
-	 * @return ·½·¨·µ»ØÖµ
+	 * @param owner å¯¹è±¡
+	 * @param methodName æ–¹æ³•å
+	 * @param args å‚æ•°
+	 * @return æ–¹æ³•è¿”å›å€¼
 	 * @throws Exception
 	 */
 	public Object invokeMethod(Object owner, String methodName, Object[] args)
@@ -77,12 +77,12 @@ public class ReflectExample {
 	}
 
 	/**
-	 * Ö´ĞĞÄ³ÀàµÄ¾²Ì¬·½·¨
+	 * æ‰§è¡ŒæŸç±»çš„é™æ€æ–¹æ³•
 	 * 
-	 * @param className ÀàÃû
-	 * @param methodName ·½·¨Ãû
-	 * @param args ²ÎÊıÊı×é
-	 * @return Ö´ĞĞ·½·¨·µ»ØµÄ½á¹û
+	 * @param className ç±»å
+	 * @param methodName æ–¹æ³•å
+	 * @param args å‚æ•°æ•°ç»„
+	 * @return æ‰§è¡Œæ–¹æ³•è¿”å›çš„ç»“æœ
 	 * @throws Exception
 	 */
 	public Object invokeStaticMethod(String className, String methodName,
@@ -101,11 +101,11 @@ public class ReflectExample {
 	}
 
 	/**
-	 * ĞÂ½¨ÊµÀı
+	 * æ–°å»ºå®ä¾‹
 	 * 
-	 * @param className ÀàÃû
-	 * @param args ¹¹Ôìº¯ÊıµÄ²ÎÊı
-	 * @return ĞÂ½¨µÄÊµÀı
+	 * @param className ç±»å
+	 * @param args æ„é€ å‡½æ•°çš„å‚æ•°
+	 * @return æ–°å»ºçš„å®ä¾‹
 	 * @throws Exception
 	 */
 	public Object newInstance(String className, Object[] args) throws Exception {
@@ -124,22 +124,22 @@ public class ReflectExample {
 	}
 
 	/**
-	 * ÊÇ²»ÊÇÄ³¸öÀàµÄÊµÀı
+	 * æ˜¯ä¸æ˜¯æŸä¸ªç±»çš„å®ä¾‹
 	 * 
-	 * @param obj ÊµÀı
-	 * @param cls Àà
-	 * @return Èç¹û obj ÊÇ´ËÀàµÄÊµÀı£¬Ôò·µ»Ø true
+	 * @param obj å®ä¾‹
+	 * @param cls ç±»
+	 * @return å¦‚æœ obj æ˜¯æ­¤ç±»çš„å®ä¾‹ï¼Œåˆ™è¿”å› true
 	 */
 	public boolean isInstance(Object obj, Class<?> cls) {
 		return cls.isInstance(obj);
 	}
 
 	/**
-	 * µÃµ½Êı×éÖĞµÄÄ³¸öÔªËØ
+	 * å¾—åˆ°æ•°ç»„ä¸­çš„æŸä¸ªå…ƒç´ 
 	 * 
-	 * @param array Êı×é
-	 * @param index Ë÷Òı
-	 * @return ·µ»ØÖ¸¶¨Êı×é¶ÔÏóÖĞË÷Òı×é¼şµÄÖµ
+	 * @param array æ•°ç»„
+	 * @param index ç´¢å¼•
+	 * @return è¿”å›æŒ‡å®šæ•°ç»„å¯¹è±¡ä¸­ç´¢å¼•ç»„ä»¶çš„å€¼
 	 */
 	public Object getByArray(Object array, int index) {
 		return Array.get(array, index);
@@ -149,7 +149,7 @@ public class ReflectExample {
 	public static void main(String[] args) {
 		ReflectExample reft = new ReflectExample();
 		ReflectClass[] rc = {
-								new ReflectClass(23L, "ÕÅÈı"), 
+								new ReflectClass(23L, "å¼ ä¸‰"), 
 								new ReflectClass(12L, "xiaoming"),
 								new ReflectClass(9L, "Anton")
 							};
@@ -160,12 +160,12 @@ public class ReflectExample {
 				Class<?> classType = rc[i].getClass();
 				
 				Field field = classType.getDeclaredField("name");
-				field.setAccessible(true);	//ÉèÖÃË½ÓĞÓò¿É¼û
-				System.out.println(field.get(rc[i]));//¿É·ÃÎÊ
+				field.setAccessible(true);	//è®¾ç½®ç§æœ‰åŸŸå¯è§
+				System.out.println(field.get(rc[i]));//å¯è®¿é—®
 				
 				Method method = classType.getDeclaredMethod("getInfo",Long.class,String.class);
-				method.setAccessible(true);	//ÉèÖÃË½ÓĞÓò¿É¼û
-				method.invoke(classType,new Long(25),"zhangshanfeng");//¿É·ÃÎÊ
+				method.setAccessible(true);	//è®¾ç½®ç§æœ‰åŸŸå¯è§
+				method.invoke(classType,new Long(25),"zhangshanfeng");//å¯è®¿é—®
 			} catch (NoSuchFieldException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -186,16 +186,16 @@ public class ReflectExample {
 				e.printStackTrace();
 			}
 		}
-		System.out.println(reft.getClass().getSimpleName());	//Ö»ÊÇÀàÃû£¬²»°üº¬°üÃû
-		System.out.println(reft.getClass().getName());			//°üº¬°üÃûµÄÀàÃû					
-		System.out.println(reft.getClass().getCanonicalName());	//°üº¬°üÃûµÄÀàÃû
+		System.out.println(reft.getClass().getSimpleName());	//åªæ˜¯ç±»åï¼Œä¸åŒ…å«åŒ…å
+		System.out.println(reft.getClass().getName());			//åŒ…å«åŒ…åçš„ç±»å					
+		System.out.println(reft.getClass().getCanonicalName());	//åŒ…å«åŒ…åçš„ç±»å
 	}
 }
 
-//ÆÕÍ¨Àà
+//æ™®é€šç±»
 class ReflectClass{	
 	public Long id;
-	private String name;		//Ë½ÓĞÓò
+	private String name;		//ç§æœ‰åŸŸ
 	/**
 	 * @param id
 	 * @param name
@@ -206,13 +206,13 @@ class ReflectClass{
 		this.name = name;
 	}
 	/**
-	 * Ë½ÓĞ·½·¨
+	 * ç§æœ‰æ–¹æ³•
 	 * @param id
 	 * @param name
 	 * @return
 	 */
 	@SuppressWarnings("unused")
-	private String getInfo(Long id, String name){	//Ë½ÓĞ·½·¨
+	private String getInfo(Long id, String name){	//ç§æœ‰æ–¹æ³•
 		return id+"-"+name;
 	}
 }

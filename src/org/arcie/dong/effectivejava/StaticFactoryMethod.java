@@ -4,18 +4,18 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author Áõ´º¶«
+ * @author åˆ˜æ˜¥ä¸œ
  * @version 
- * @time 2014Äê1ÔÂ30ÈÕÏÂÎç11:44:32
+ * @time 2014å¹´1æœˆ30æ—¥ä¸‹åˆ11:44:32
  */
 public class StaticFactoryMethod {
 	public static void main(String[] args) {
-		//´«µİÊÇApple
+		//ä¼ é€’æ˜¯Apple
 		Friut apple = FriutFactory.getFriut("Apple");//Not-New
 		if(apple != null){
 			apple.say();
 		}else{
-			System.out.println("ÔİÊ±²»Éú²ú¸ÃË®¹û");
+			System.out.println("æš‚æ—¶ä¸ç”Ÿäº§è¯¥æ°´æœ");
 		}
 	}
 }
@@ -25,8 +25,8 @@ class Gender {
 	private Gender(String description){
 		this.description = description;
 	}
-	private static final Gender female = new Gender("Å®");
-	private static final Gender male = new Gender("ÄĞ");
+	private static final Gender female = new Gender("å¥³");
+	private static final Gender male = new Gender("ç”·");
 	
 	public static Gender getFemale(){
 		return female;
