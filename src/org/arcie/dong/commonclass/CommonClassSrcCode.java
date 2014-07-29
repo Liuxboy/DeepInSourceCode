@@ -1,4 +1,4 @@
-package org.arcie.dong.reader;
+package org.arcie.dong.commonclass;
 
 import java.io.DataInput;
 import java.io.DataOutput;

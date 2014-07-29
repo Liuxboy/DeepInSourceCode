@@ -1,4 +1,4 @@
-package org.arcie.dong.reader;
+package org.arcie.dong.commonclass;
 
 import java.util.AbstractCollection;
 import java.util.Collection;
@@ -44,7 +44,7 @@ public class JavaCollectionFramework<E> {
         hashMap2.put("two",persons[1]);
         hashMap2.put("three",persons[2]);
         hashMap2.put("four",persons[3]);
-
+        System.out.println(hashMap1.put("第一个1","梅西"));//打印的是第一个值"刘春东"
     }
 }
 
