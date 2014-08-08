@@ -1,12 +1,6 @@
 package org.arcie.dong.commonclass;
 
-import java.util.AbstractCollection;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * @author 刘春东
@@ -20,6 +14,7 @@ public class JavaCollectionFramework<E> {
 	 */
 	Collection<?> cl;
 	List<?> list = null;
+    ArrayList<?> arrayList = null;
 	Vector<?> vector = null;
 	HashMap<?, ?> hm;
 	Hashtable<?, ?> ht;
