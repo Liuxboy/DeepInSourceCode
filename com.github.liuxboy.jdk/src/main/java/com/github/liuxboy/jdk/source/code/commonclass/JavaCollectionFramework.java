@@ -1,6 +1,7 @@
 package com.github.liuxboy.jdk.source.code.commonclass;
 
 import java.util.*;
+import java.util.concurrent.*;
 
 /**
  * @author 刘春东
@@ -18,16 +19,25 @@ public class JavaCollectionFramework<E> {
 	Vector<?> vector = null;
 	HashMap<?, ?> hm;
 	Hashtable<?, ?> ht;
-	
+    Arrays arrays;
 	AbstractCollection<E> sc;
 	EnumSet<?> es;
 
+    /**
+     * 并发包
+     */
+    ConcurrentHashMap concurrentHashMap;
+    ConcurrentLinkedQueue concurrentLinkedQueue;
+    ConcurrentNavigableMap concurrentNavigableMap;
+    ConcurrentMap concurrentMap;
+    ConcurrentSkipListMap concurrentSkipListMap;
+    ConcurrentSkipListSet concurrentSkipListSet;
 
     public static void main(String[] args){
         HashMap<String,String> hashMap1 = new HashMap<String,String>();
         HashMap<String,Person> hashMap2 = new HashMap<String,Person>(100,0.8f);
         Person[] persons = new Person[10];
-        persons[0] = new Person("刘春东",27);
+        persons[0] = new Person("刘亲",27);
         persons[1] = new Person("张强",27);
         persons[2] = new Person("王花",27);
         persons[3] = new Person("李可白",27);
@@ -38,7 +48,7 @@ public class JavaCollectionFramework<E> {
         hashMap2.put("one",persons[0]);
         hashMap2.put("two",persons[1]);
         hashMap2.put("three",persons[2]);
-        hashMap2.put("four",persons[3]);
+        hashMap2.put("four", persons[3]);
         System.out.println(hashMap1.put("第一个1","梅西"));//打印的是第一个值"刘春东"
     }
 }
