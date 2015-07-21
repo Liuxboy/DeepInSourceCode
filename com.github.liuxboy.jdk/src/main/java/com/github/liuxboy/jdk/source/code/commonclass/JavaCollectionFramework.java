@@ -32,6 +32,7 @@ public class JavaCollectionFramework<E> {
     ConcurrentMap concurrentMap;
     ConcurrentSkipListMap concurrentSkipListMap;
     ConcurrentSkipListSet concurrentSkipListSet;
+    IdentityHashMap identityHashMap;
 
     public static void main(String[] args){
         HashMap<String,String> hashMap1 = new HashMap<String,String>();
@@ -41,7 +42,7 @@ public class JavaCollectionFramework<E> {
         persons[1] = new Person("张强",27);
         persons[2] = new Person("王花",27);
         persons[3] = new Person("李可白",27);
-        hashMap1.put("第一个1","刘春东");
+        hashMap1.put("第一个1","刘春花");
         hashMap1.put("第一个2","张强");
         hashMap1.put("第一个3","王花");
         hashMap1.put("第一个4","李可白");
