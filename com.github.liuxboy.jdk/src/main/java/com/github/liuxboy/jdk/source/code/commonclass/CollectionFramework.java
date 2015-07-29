@@ -9,7 +9,7 @@ import java.util.concurrent.*;
  * @param <E>
  * @time 2014年1月30日下午4:30:37
  */
-public class JavaCollectionFramework<E> {
+public class CollectionFramework<E> {
 	/**
 	 * 容器类Collection
 	 */
@@ -22,6 +22,7 @@ public class JavaCollectionFramework<E> {
     Arrays arrays;
 	AbstractCollection<E> sc;
 	EnumSet<?> es;
+    Collections collections;
 
     /**
      * 并发包
