@@ -10,21 +10,27 @@ package com.github.liuxboy.jdk.source.code.interview.java.constantpool;
  */
 public class ConstantPool {
     public static void classOfPoolAndHeap(){
+        int i0 = 1;
         Integer i1 = new Integer(1);
         Integer i2 = new Integer(1);
         Integer i3 = 1;
         Integer i4 = 1;
-        Integer i5 = new Integer(0);
+        Integer i5 = new Integer(1);
+        Integer i6 = Integer.valueOf(1);
+        //
+        System.out.println(i0 == i1);
         //i1和i2分别位于堆中不同的内存空间
         System.out.println(i1 == i2);
         //i3和i4指向常量池中同一个内存空间
         System.out.println(i3 == i4);
         //i1和i3分别位于堆中不同的内存空间
         System.out.println(i1 == i3);
+        System.out.println(i0 == i3);
         //i4与i5不指向不同空间，但数学运算在栈中完成，
         //JVM会先对i5进行拆箱，再运算，其实比较的就是
         //两数的值
         System.out.println(i3 == i4 + i5);
+        System.out.println(i3 == i6);
         //同上
         System.out.println(i1 == i2 + i5);
     }
