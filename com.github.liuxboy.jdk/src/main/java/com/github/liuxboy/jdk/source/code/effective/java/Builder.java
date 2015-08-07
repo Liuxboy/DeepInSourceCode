@@ -1,4 +1,4 @@
-package com.github.liuxboy.jdk.source.code.effectivejava;
+package com.github.liuxboy.jdk.source.code.effective.java;
 /**
  * @author 刘春东
  * @version 
