@@ -1,5 +1,7 @@
 package com.github.liuxboy.jdk.source.code.interview.java.constantpool;
 
+import com.github.liuxboy.jdk.source.code.interview.java.other.Other;
+
 /**
  * Created with IntelliJ IDEA13.0
  * Author:刘春东

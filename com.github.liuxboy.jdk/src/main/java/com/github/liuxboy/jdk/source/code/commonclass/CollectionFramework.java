@@ -14,16 +14,30 @@ public class CollectionFramework<E> {
 	 * 容器类Collection
 	 */
 	Collection<?> cl;
-	List<?> list = null;
-    ArrayList<?> arrayList = null;
-	Vector<?> vector = null;
-	HashMap<?, ?> hm;
-	Hashtable<?, ?> ht;
-    Arrays arrays;
-	AbstractCollection<E> sc;
-	EnumSet<?> es;
-    Collections collections;
+    List<?> list = null;
+    LinkedList linkedList;
+    LinkedHashMap linkedHashMap;
+    LinkedHashSet linkedHashSet;
+    Set<?> st;
+    Queue<?> queue;
+    Deque<?> deque;
 
+    ListIterator listIterator;
+    TreeSet<?> treeSet;
+    HashSet<?> hashSet;
+
+    ArrayList<?> arrayList = null;
+    HashMap<?, ?> hm;
+    WeakHashMap<?,?> weakHashMap;
+    AbstractCollection<E> sc;
+    EnumSet<?> es;
+    Collections collections;
+    Arrays arrays;
+
+    Vector<?> vector;
+    Stack<?> stack;
+    Hashtable<?, ?> ht;
+    Enumeration enumeration;
     /**
      * 并发包
      */
