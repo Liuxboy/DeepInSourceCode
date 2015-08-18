@@ -23,5 +23,7 @@ public class JoyOfHex {
         System.out.println(0x80000001L);//2147483649(转换成long型，64位)
         System.out.println(0xcafebabe);//-889275714,十六进制c(其二进制为1100)，最高位是1，表示负数，
         System.out.println(0xcafebabeL);
+
+
     }
 }
