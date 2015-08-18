@@ -1,16 +1,8 @@
-package com.github.liuxboy.jdk.source.code.java.puzzlers.expressive.puzzlers;
+package com.github.liuxboy.jdk.source.code.java.puzzlers.expressive.puzzlers.puzzle02;
 
 import java.math.BigDecimal;
 
-/**
- * Created In www.jdpay.com
- *
- * @author wyliuchundong
- * @version 1.0.0
- * @date 2015/8/14 15:17
- * @comment Puzzler02_Change
- */
-public class Puzzler02_Change {
+public class Change {
     /**
      * 要精确计算浮点数，最好用new BigDecimal("String")这样的构造参数。
      * 比较两个浮点数的大小，要使用BigDecimal的compareTo方法。
@@ -33,4 +25,3 @@ public class Puzzler02_Change {
         System.out.println(new BigDecimal(0).compareTo(new BigDecimal("0.00")));
     }
 }
-

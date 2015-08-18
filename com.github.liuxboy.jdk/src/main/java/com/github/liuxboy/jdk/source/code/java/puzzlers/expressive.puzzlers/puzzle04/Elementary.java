@@ -1,17 +1,9 @@
-package com.github.liuxboy.jdk.source.code.java.puzzlers.expressive.puzzlers;
+package com.github.liuxboy.jdk.source.code.java.puzzlers.expressive.puzzlers.puzzle04;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created In www.jdpay.com
- *
- * @author wyliuchundong
- * @version 1.0.0
- * @date 2015/8/14 21:54
- * @comment Puzzler04_Elementary
- */
-public class Puzzler04_Elementary {
+public class Elementary {
     /**
      * 最好的办法，使用长整形字面量时，用大写L，别用小写的l
      * 如：1253L

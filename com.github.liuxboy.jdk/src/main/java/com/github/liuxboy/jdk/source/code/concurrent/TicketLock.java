@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * @author wyliuchundong
  * @version 1.0.0
- * @date 2015/7/30 20:28
+ * @date 2015/7/30 puzzle20:28
  * @comment TicketLock
  * Author：山鸡
  * http://ifeve.com/java_lock_see2/

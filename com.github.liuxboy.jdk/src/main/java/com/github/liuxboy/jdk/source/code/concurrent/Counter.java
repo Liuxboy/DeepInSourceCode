@@ -5,7 +5,7 @@ package com.github.liuxboy.jdk.source.code.concurrent;
  *
  * @author wyliuchundong
  * @version 1.0.0
- * @date 2015/7/1 11:43
+ * @date 2015/7/1 puzzle11:43
  * @comment Counter
  */
 public class Counter {

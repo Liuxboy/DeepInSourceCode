@@ -1,14 +1,6 @@
-package com.github.liuxboy.jdk.source.code.java.puzzlers.expressive.puzzlers;
+package com.github.liuxboy.jdk.source.code.java.puzzlers.expressive.puzzlers.puzzle03;
 
-/**
- * Created In www.jdpay.com
- *
- * @author wyliuchundong
- * @version 1.0.0
- * @date 2015/8/14 16:43
- * @comment Puzzler03_LongDivision
- */
-public class Puzzler03_LongDivision {
+public class LongDivision {
     public static void main(String[] args) {
         /**
          * 前一个计算工会溢出，因为这个计算式完全是以int运算来执行的，
@@ -22,7 +14,5 @@ public class Puzzler03_LongDivision {
         System.out.println(MICROS_PER_DAY_WRONG);
         System.out.println(MICROS_PER_DAY_RIGHT);
         System.out.println(MICROS_PER_DAY_RIGHT / MILLIS_PER_DAY);
-
     }
-
 }

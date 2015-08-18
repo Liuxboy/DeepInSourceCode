@@ -4,8 +4,8 @@ package com.github.liuxboy.jdk.source.code.interview.java;
  * Created with IntelliJ IDEA13.0
  * User:刘春东
  * E-mail:liuchundong2008@gmail.com
- * Date:14-7-7
- * Time:下午5:20
+ * Date:puzzle14-7-7
+ * Time:下午5:puzzle20
  * Version:0.1
  */
 //求素数

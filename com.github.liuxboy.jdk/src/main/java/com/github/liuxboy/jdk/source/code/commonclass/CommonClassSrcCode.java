@@ -20,7 +20,7 @@ import org.omg.CORBA.DataOutputStream;
  * 
  * @author chundong.liu
  * @version JDK7.0
- * @since 2013.12.10
+ * @since 2013.puzzle12.10
  *
  */
 public class CommonClassSrcCode {

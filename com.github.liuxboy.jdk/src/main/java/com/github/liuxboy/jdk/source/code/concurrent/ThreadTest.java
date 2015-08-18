@@ -5,13 +5,13 @@ package com.github.liuxboy.jdk.source.code.concurrent;
  *
  * @author wyliuchundong
  * @version 1.0.0
- * @date 2015/7/13 20:40
+ * @date 2015/7/puzzle13 puzzle20:40
  * @comment ThreadTest
  */
 /**
  * Thread sleep和wait区别
  * @author DreamSea
- * 2012-1-15
+ * 2012-1-puzzle15
  */
 public class ThreadTest implements Runnable {
     int number = 10;

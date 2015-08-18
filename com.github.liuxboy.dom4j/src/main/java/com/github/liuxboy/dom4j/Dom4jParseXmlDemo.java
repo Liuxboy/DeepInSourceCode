@@ -13,7 +13,7 @@ import org.dom4j.io.SAXReader;
 /**
  * @author 刘春东
  * @version 0.1
- * @time 2014年4月8日下午8:26:11
+ * @time 2014年4月8日下午8:26:puzzle11
  * 使用dom4j解析xml文档
  *
  */

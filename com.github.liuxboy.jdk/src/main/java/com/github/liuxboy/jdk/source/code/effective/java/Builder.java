@@ -2,7 +2,7 @@ package com.github.liuxboy.jdk.source.code.effective.java;
 /**
  * @author 刘春东
  * @version 
- * @time 2014年2月1日上午1:43:13
+ * @time 2014年2月1日上午1:43:puzzle13
  */
 public class Builder {
 	//构建器
