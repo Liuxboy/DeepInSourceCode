@@ -1,4 +1,4 @@
-package com.github.liuxboy.jdk.source.code.concurrent;
+package com.github.liuxboy.jdk.source.code.concurrent.creat.newthread;
 
 /**
  * Created In www.jdpay.com
@@ -6,14 +6,14 @@ package com.github.liuxboy.jdk.source.code.concurrent;
  * @author wyliuchundong
  * @version 1.0.0
  * @date 2015/7/puzzle13 puzzle20:40
- * @comment ThreadTest
+ * @comment RunnableTest
  */
 /**
  * Thread sleep和wait区别
  * @author DreamSea
  * 2012-1-puzzle15
  */
-public class ThreadTest implements Runnable {
+public class RunnableTest implements Runnable {
     int number = 10;
 
     public void firstMethod() throws Exception {
@@ -46,10 +46,10 @@ public class ThreadTest implements Runnable {
     }
 
     public static void main(String[] args) throws Exception {
-        ThreadTest threadTest = new ThreadTest();
-        Thread thread = new Thread(threadTest);
+        RunnableTest runnableTest = new RunnableTest();
+        Thread thread = new Thread(runnableTest);
         thread.start();
-        threadTest.secondMethod();
-        System.out.println("number=" + threadTest.number);
+        runnableTest.secondMethod();
+        System.out.println("number=" + runnableTest.number);
     }
 }
