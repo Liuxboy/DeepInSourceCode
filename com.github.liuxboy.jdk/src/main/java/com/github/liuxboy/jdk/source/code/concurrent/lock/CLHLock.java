@@ -1,4 +1,4 @@
-package com.github.liuxboy.jdk.source.code.concurrent;
+package com.github.liuxboy.jdk.source.code.concurrent.lock;
 
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
