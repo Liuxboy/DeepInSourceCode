@@ -1,3 +1,5 @@
+package com.github.liuxboy.jdk.source.code.java.puzzlers.classy.puzzlers.puzzle46;
+
 public class Confusing {
     private Confusing(Object o) {
         System.out.println("Object");

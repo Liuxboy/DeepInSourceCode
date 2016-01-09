@@ -1,3 +1,5 @@
+package com.github.liuxboy.jdk.source.code.java.puzzlers.puzzlers.with.character.puzzle18;
+
 public class StringCheese {
     public static void main(String args[]) {
         byte bytes[] = new byte[256];    

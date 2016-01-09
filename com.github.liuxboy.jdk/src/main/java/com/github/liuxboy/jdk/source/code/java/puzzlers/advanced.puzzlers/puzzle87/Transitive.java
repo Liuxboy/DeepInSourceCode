@@ -5,12 +5,12 @@ public class Transitive {
          * that causes this program to print "true true false", then
          * you have proven that the == operator is not transitive.
          */
-        <typeX> x = <valueX>;
+       /* <typeX> x = <valueX>;
         <typeY> y = <valueY>;
         <typeZ> z = <valueZ>;
 
         System.out.print ((x == y) + " ");
         System.out.print ((y == z) + " ");
-        System.out.println(x == z);
+        System.out.println(x == z);*/
     }
 }

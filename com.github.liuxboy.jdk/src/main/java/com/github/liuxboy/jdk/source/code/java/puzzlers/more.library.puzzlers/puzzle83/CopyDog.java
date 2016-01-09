@@ -2,7 +2,7 @@ package com.github.liuxboy.jdk.source.code.java.puzzlers.more.library.puzzlers.p
 
 public class CopyDog {
     public static void main(String[] args) {
-        Dog newDog = ??? ; // You figure out what to put here
+        Dog newDog = null ; // You figure out what to put here
 
         // This line should print false
         System.out.println(newDog == Dog.INSTANCE);

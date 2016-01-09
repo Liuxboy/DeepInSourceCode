@@ -7,8 +7,8 @@ public class Reflexive {
          * that causes this program to print "false", then
          * you have proven that the == operator is not reflexive.
          */
-        <typeX> x = <valueX>;
+        /*<typeX> x = <valueX>;
 
-        System.out.println(x == x);
+        System.out.println(x == x);*/
     }
 }

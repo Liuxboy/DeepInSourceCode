@@ -1,3 +1,5 @@
+package com.github.liuxboy.jdk.source.code.java.puzzlers.advanced.puzzlers.puzzle89;
+
 public class LinkedList<E> {
     private Node<E> head = null;
 
@@ -8,8 +10,8 @@ public class LinkedList<E> {
         // Node constructor links the node as a new head
         Node(E value) {
             this.value = value;
-            this.next = head;
-            head = this;
+            this.next = (Node<E>) head;
+            //head = this;
         }
     }
 
