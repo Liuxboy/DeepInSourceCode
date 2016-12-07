@@ -15,6 +15,7 @@
         <module>com.github.liuxboy.spring</module>
         <module>net.jcip.example</module>
         <module>art.concurrent.book</module>
+        <module>com.github.liuxboy.httpclient</module>
     </modules>
 
     <properties>
@@ -42,6 +43,7 @@
         <mysql-connector-java.version>5.1.8</mysql-connector-java.version>
         <junit.version>4.11</junit.version>
         <servlet.version>2.5</servlet.version>
+        <httpclient.version>4.3.6</httpclient.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -213,9 +215,9 @@
                 <version>${junit.version}</version>
             </dependency>
             <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>servlet-api</artifactId>
-                <version>${servlet.version}</version>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
