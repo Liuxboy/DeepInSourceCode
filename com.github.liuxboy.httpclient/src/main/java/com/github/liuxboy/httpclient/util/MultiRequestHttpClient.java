@@ -6,7 +6,6 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpHead;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.entity.ContentType;
@@ -15,15 +14,11 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HttpContext;
-import org.apache.http.util.CharsetUtils;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Package: com.github.liuxboy.httpclient.util <br>
@@ -32,7 +27,7 @@ import java.util.Map;
  * Time: 20:18 <br>
  * Desc:
  */
-public class MulitRequestHttpClient {
+public class MultiRequestHttpClient {
 
     public static void main(String[] args) {
         PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
