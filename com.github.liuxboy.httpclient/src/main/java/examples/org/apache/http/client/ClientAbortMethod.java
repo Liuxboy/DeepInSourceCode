@@ -25,39 +25,31 @@
  *
  */
 
-package examples.org.apache.http.examples.client.win;
+package examples.org.apache.http.client;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.WinHttpClients;
-import org.apache.http.util.EntityUtils;
+import org.apache.http.impl.client.HttpClients;
 
 /**
- * This example demonstrates how to create HttpClient pre-configured
- * with support for integrated Windows authentication.
+ * This example demonstrates how to abort an HTTP method before its normal completion.
  */
-public class ClientWinAuth {
+public class ClientAbortMethod {
 
     public final static void main(String[] args) throws Exception {
-
-        if (!WinHttpClients.isWinAuthAvailable()) {
-            System.out.println("Integrated Win auth is not supported!!!");
-        }
-
-        CloseableHttpClient httpclient = WinHttpClients.createDefault();
-        // There is no need to provide user credentials
-        // HttpClient will attempt to access current user security context through
-        // Windows platform specific methods via JNI.
+        CloseableHttpClient httpclient = HttpClients.createDefault();
         try {
-            HttpGet httpget = new HttpGet("http://winhost/");
+            HttpGet httpget = new HttpGet("http://httpbin.org/get");
 
-            System.out.println("Executing request " + httpget.getRequestLine());
+            System.out.println("Executing request " + httpget.getURI());
             CloseableHttpResponse response = httpclient.execute(httpget);
             try {
                 System.out.println("----------------------------------------");
                 System.out.println(response.getStatusLine());
-                EntityUtils.consume(response.getEntity());
+                // Do not feel like reading the response body
+                // Call abort on the request object
+                httpget.abort();
             } finally {
                 response.close();
             }

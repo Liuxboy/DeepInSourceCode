@@ -24,52 +24,54 @@
  * <http://www.apache.org/>.
  *
  */
-package examples.org.apache.http.examples.client;
 
-import java.io.File;
-import java.io.FileInputStream;
+package examples.org.apache.http.client;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.InputStreamEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 
 /**
- * Example how to use unbuffered chunk-encoded POST request.
+ * This example demonstrates the recommended way of using API to make sure
+ * the underlying connection gets released back to the connection manager.
  */
-public class ClientChunkEncodedPost {
+public class ClientConnectionRelease {
 
-    public static void main(String[] args) throws Exception {
-        if (args.length != 1)  {
-            System.out.println("File path not given");
-            System.exit(1);
-        }
+    public final static void main(String[] args) throws Exception {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         try {
-            HttpPost httppost = new HttpPost("http://httpbin.org/post");
+            HttpGet httpget = new HttpGet("http://httpbin.org/get");
 
-            File file = new File(args[0]);
-
-            InputStreamEntity reqEntity = new InputStreamEntity(
-                    new FileInputStream(file), -1, ContentType.APPLICATION_OCTET_STREAM);
-            reqEntity.setChunked(true);
-            // It may be more appropriate to use FileEntity class in this particular
-            // instance but we are using a more generic InputStreamEntity to demonstrate
-            // the capability to stream out data from any arbitrary source
-            //
-            // FileEntity entity = new FileEntity(file, "binary/octet-stream");
-
-            httppost.setEntity(reqEntity);
-
-            System.out.println("Executing request: " + httppost.getRequestLine());
-            CloseableHttpResponse response = httpclient.execute(httppost);
+            System.out.println("Executing request " + httpget.getRequestLine());
+            CloseableHttpResponse response = httpclient.execute(httpget);
             try {
                 System.out.println("----------------------------------------");
                 System.out.println(response.getStatusLine());
-                System.out.println(EntityUtils.toString(response.getEntity()));
+
+                // Get hold of the response entity
+                HttpEntity entity = response.getEntity();
+
+                // If the response does not enclose an entity, there is no need
+                // to bother about connection release
+                if (entity != null) {
+                    InputStream instream = entity.getContent();
+                    try {
+                        instream.read();
+                        // do something useful with the response
+                    } catch (IOException ex) {
+                        // In case of an IOException the connection will be released
+                        // back to the connection manager automatically
+                        throw ex;
+                    } finally {
+                        // Closing the input stream will trigger connection release
+                        instream.close();
+                    }
+                }
             } finally {
                 response.close();
             }
@@ -79,3 +81,4 @@ public class ClientChunkEncodedPost {
     }
 
 }
+

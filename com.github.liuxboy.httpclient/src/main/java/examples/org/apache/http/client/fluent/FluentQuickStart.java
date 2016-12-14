@@ -26,6 +26,9 @@
  */
 package examples.org.apache.http.client.fluent;
 
+import org.apache.http.client.fluent.Form;
+import org.apache.http.client.fluent.Request;
+
 public class FluentQuickStart {
 
     public static void main(String[] args) throws Exception {

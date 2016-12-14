@@ -24,7 +24,7 @@
  * <http://www.apache.org/>.
  *
  */
-package examples.org.apache.http.examples.client;
+package examples.org.apache.http.client;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;

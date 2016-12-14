@@ -24,51 +24,53 @@
  * <http://www.apache.org/>.
  *
  */
+package examples.org.apache.http.client;
 
-package examples.org.apache.http.examples.client;
-
-import java.util.List;
-
-import org.apache.http.client.CookieStore;
+import org.apache.http.HttpHost;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.CredentialsProvider;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.cookie.Cookie;
-import org.apache.http.impl.client.BasicCookieStore;
+import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 /**
- * This example demonstrates the use of a local HTTP context populated with
- * custom attributes.
+ * A simple example that uses HttpClient to execute an HTTP request
+ * over a secure connection tunneled through an authenticating proxy.
  */
-public class ClientCustomContext {
+public class ClientProxyAuthentication {
 
-    public final static void main(String[] args) throws Exception {
-        CloseableHttpClient httpclient = HttpClients.createDefault();
+    public static void main(String[] args) throws Exception {
+        CredentialsProvider credsProvider = new BasicCredentialsProvider();
+        credsProvider.setCredentials(
+                new AuthScope("localhost", 8888),
+                new UsernamePasswordCredentials("squid", "squid"));
+        credsProvider.setCredentials(
+                new AuthScope("httpbin.org", 80),
+                new UsernamePasswordCredentials("user", "passwd"));
+        CloseableHttpClient httpclient = HttpClients.custom()
+                .setDefaultCredentialsProvider(credsProvider).build();
         try {
-            // Create a local instance of cookie store
-            CookieStore cookieStore = new BasicCookieStore();
+            HttpHost target = new HttpHost("httpbin.org", 80, "http");
+            HttpHost proxy = new HttpHost("localhost", 8888);
 
-            // Create local HTTP context
-            HttpClientContext localContext = HttpClientContext.create();
-            // Bind custom cookie store to the local context
-            localContext.setCookieStore(cookieStore);
+            RequestConfig config = RequestConfig.custom()
+                .setProxy(proxy)
+                .build();
+            HttpGet httpget = new HttpGet("/basic-auth/user/passwd");
+            httpget.setConfig(config);
 
-            HttpGet httpget = new HttpGet("http://httpbin.org/cookies");
-            System.out.println("Executing request " + httpget.getRequestLine());
+            System.out.println("Executing request " + httpget.getRequestLine() + " to " + target + " via " + proxy);
 
-            // Pass local context as a parameter
-            CloseableHttpResponse response = httpclient.execute(httpget, localContext);
+            CloseableHttpResponse response = httpclient.execute(target, httpget);
             try {
                 System.out.println("----------------------------------------");
                 System.out.println(response.getStatusLine());
-                List<Cookie> cookies = cookieStore.getCookies();
-                for (int i = 0; i < cookies.size(); i++) {
-                    System.out.println("Local cookie: " + cookies.get(i));
-                }
-                EntityUtils.consume(response.getEntity());
+                System.out.println(EntityUtils.toString(response.getEntity()));
             } finally {
                 response.close();
             }
@@ -76,6 +78,4 @@ public class ClientCustomContext {
             httpclient.close();
         }
     }
-
 }
-

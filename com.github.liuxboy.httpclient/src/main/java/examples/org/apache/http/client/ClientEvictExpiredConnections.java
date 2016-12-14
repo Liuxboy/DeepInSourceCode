@@ -24,59 +24,47 @@
  * <http://www.apache.org/>.
  *
  */
-package examples.org.apache.http.examples.client;
+package examples.org.apache.http.client;
 
-import org.apache.http.HttpHost;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.AuthCache;
-import org.apache.http.client.CredentialsProvider;
+import java.util.concurrent.TimeUnit;
+
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.impl.auth.BasicScheme;
-import org.apache.http.impl.client.BasicAuthCache;
-import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.pool.PoolStats;
 import org.apache.http.util.EntityUtils;
 
 /**
- * An example of HttpClient can be customized to authenticate
- * preemptively using BASIC scheme.
- * <b>
- * Generally, preemptive authentication can be considered less
- * secure than a response to an authentication challenge
- * and therefore discouraged.
+ * Example demonstrating how to evict expired and idle connections
+ * from the connection pool.
  */
-public class ClientPreemptiveBasicAuthentication {
+public class ClientEvictExpiredConnections {
 
     public static void main(String[] args) throws Exception {
-        HttpHost target = new HttpHost("httpbin.org", 80, "http");
-        CredentialsProvider credsProvider = new BasicCredentialsProvider();
-        credsProvider.setCredentials(
-                new AuthScope(target.getHostName(), target.getPort()),
-                new UsernamePasswordCredentials("user", "passwd"));
+        PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
+        cm.setMaxTotal(100);
         CloseableHttpClient httpclient = HttpClients.custom()
-                .setDefaultCredentialsProvider(credsProvider).build();
+                .setConnectionManager(cm)
+                .evictExpiredConnections()
+                .evictIdleConnections(5L, TimeUnit.SECONDS)
+                .build();
         try {
+            // create an array of URIs to perform GETs on
+            String[] urisToGet = {
+                "http://hc.apache.org/",
+                "http://hc.apache.org/httpcomponents-core-ga/",
+                "http://hc.apache.org/httpcomponents-client-ga/",
+            };
 
-            // Create AuthCache instance
-            AuthCache authCache = new BasicAuthCache();
-            // Generate BASIC scheme object and add it to the local
-            // auth cache
-            BasicScheme basicAuth = new BasicScheme();
-            authCache.put(target, basicAuth);
+            for (int i = 0; i < urisToGet.length; i++) {
+                String requestURI = urisToGet[i];
+                HttpGet request = new HttpGet(requestURI);
 
-            // Add AuthCache to the execution context
-            HttpClientContext localContext = HttpClientContext.create();
-            localContext.setAuthCache(authCache);
+                System.out.println("Executing request " + requestURI);
 
-            HttpGet httpget = new HttpGet("http://httpbin.org/hidden-basic-auth/user/passwd");
-
-            System.out.println("Executing request " + httpget.getRequestLine() + " to target " + target);
-            for (int i = 0; i < 3; i++) {
-                CloseableHttpResponse response = httpclient.execute(target, httpget, localContext);
+                CloseableHttpResponse response = httpclient.execute(request);
                 try {
                     System.out.println("----------------------------------------");
                     System.out.println(response.getStatusLine());
@@ -85,6 +73,16 @@ public class ClientPreemptiveBasicAuthentication {
                     response.close();
                 }
             }
+
+            PoolStats stats1 = cm.getTotalStats();
+            System.out.println("Connections kept alive: " + stats1.getAvailable());
+
+            // Sleep 10 sec and let the connection evictor do its job
+            Thread.sleep(10000);
+
+            PoolStats stats2 = cm.getTotalStats();
+            System.out.println("Connections kept alive: " + stats2.getAvailable());
+
         } finally {
             httpclient.close();
         }

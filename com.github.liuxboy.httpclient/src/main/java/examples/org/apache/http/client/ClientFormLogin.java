@@ -24,7 +24,7 @@
  * <http://www.apache.org/>.
  *
  */
-package examples.org.apache.http.examples.client;
+package examples.org.apache.http.client;
 
 import java.net.URI;
 import java.util.List;

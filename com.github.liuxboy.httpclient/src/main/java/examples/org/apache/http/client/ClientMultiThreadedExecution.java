@@ -24,7 +24,7 @@
  * <http://www.apache.org/>.
  *
  */
-package examples.org.apache.http.examples.client;
+package examples.org.apache.http.client;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;

@@ -24,57 +24,42 @@
  * <http://www.apache.org/>.
  *
  */
-package examples.org.apache.http.examples.entity.mime;
 
-import java.io.File;
+package examples.org.apache.http.client.win;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.entity.mime.content.StringBody;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
+// TODO import org.apache.http.impl.client.WinHttpClients;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 /**
- * Example how to use multipart/form encoded POST request.
+ * This example demonstrates how to create HttpClient pre-configured
+ * with support for integrated Windows authentication.
  */
-public class ClientMultipartFormPost {
+public class ClientWinAuth {
 
-    public static void main(String[] args) throws Exception {
-        if (args.length != 1)  {
-            System.out.println("File path not given");
-            System.exit(1);
-        }
+    public final static void main(String[] args) throws Exception {
+
+        //TODO if (!WinHttpClients.isWinAuthAvailable()) {
+        //TODO    System.out.println("Integrated Win auth is not supported!!!");
+        //TODO}
+
+        //TODO CloseableHttpClient httpclient = WinHttpClients.createDefault();
         CloseableHttpClient httpclient = HttpClients.createDefault();
+        // There is no need to provide user credentials
+        // HttpClient will attempt to access current user security context through
+        // Windows platform specific methods via JNI.
         try {
-            HttpPost httppost = new HttpPost("http://localhost:8080" +
-                    "/servlets-examples/servlet/RequestInfoExample");
+            HttpGet httpget = new HttpGet("http://winhost/");
 
-            FileBody bin = new FileBody(new File(args[0]));
-            StringBody comment = new StringBody("A binary file of some kind", ContentType.TEXT_PLAIN);
-
-            HttpEntity reqEntity = MultipartEntityBuilder.create()
-                    .addPart("bin", bin)
-                    .addPart("comment", comment)
-                    .build();
-
-
-            httppost.setEntity(reqEntity);
-
-            System.out.println("executing request " + httppost.getRequestLine());
-            CloseableHttpResponse response = httpclient.execute(httppost);
+            System.out.println("Executing request " + httpget.getRequestLine());
+            CloseableHttpResponse response = httpclient.execute(httpget);
             try {
                 System.out.println("----------------------------------------");
                 System.out.println(response.getStatusLine());
-                HttpEntity resEntity = response.getEntity();
-                if (resEntity != null) {
-                    System.out.println("Response content length: " + resEntity.getContentLength());
-                }
-                EntityUtils.consume(resEntity);
+                EntityUtils.consume(response.getEntity());
             } finally {
                 response.close();
             }
@@ -84,3 +69,4 @@ public class ClientMultipartFormPost {
     }
 
 }
+
