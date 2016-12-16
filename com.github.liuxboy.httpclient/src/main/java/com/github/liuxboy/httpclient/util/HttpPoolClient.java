@@ -1,9 +1,29 @@
 package com.github.liuxboy.httpclient.util;
 
+import org.apache.commons.codec.Charsets;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Package: com.github.liuxboy.httpclient.util <br>
@@ -38,11 +58,11 @@ public class HttpPoolClient {
      * 比如整个池子200个连接，通过该连接池同时请求两个地址
      * 最大连接数，整个池子的连接数
      */
-    private static int maxConnTotal = 200;      //最大连接数
+    private static int maxConnTotal = 300;          //最大连接数
     /**
      * 单个路由并发连接数
      */
-    private static int maxConnPerRoute = 50;    //并发连接数
+    private static int maxConnPerRoute = 100;        //并发连接数
 
     private static RequestConfig requestConfig = RequestConfig.custom()
             .setSocketTimeout(socketTimeout)
@@ -54,11 +74,50 @@ public class HttpPoolClient {
             .setMaxConnTotal(maxConnTotal)
             .setMaxConnPerRoute(maxConnPerRoute)
             .setDefaultRequestConfig(requestConfig)
-            .setConnectionManager(new PoolingHttpClientConnectionManager())
             .build();
 
-    public static String getForObject() {
-        //TODO
-        return null;
+    /**
+     *
+     * @param url
+     * @param map   参数map
+     * @return JSON格式字符串返回
+     */
+    public static String getForObject(String url, Map<String, String> map) {
+        StringBuffer sb = new StringBuffer(url);
+        List<NameValuePair>  paramList = new ArrayList<NameValuePair>();
+        if (map != null) {
+            for (Map.Entry<String, String> entry : map.entrySet()) {
+                paramList.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+            }
+        }
+        String retStr = "";
+        try {
+            //组装uri
+            URI uri = new URIBuilder(url).setParameters(paramList).build();
+            HttpGet httpGet = new HttpGet(uri);
+            //执行请求
+            HttpResponse response = httpClient.execute(httpGet);
+            int code = response.getStatusLine().getStatusCode();
+            //判断请求是否成功
+            if (code == HttpStatus.SC_OK) {
+                //获取返回的实体
+                HttpEntity entity = response.getEntity();
+                //获取返回的内容
+                retStr = EntityUtils.toString(entity, Charsets.UTF_8);
+
+            } else {
+                //logger.error("HttpPoolClient#getForObject.code=", code);
+                throw new RuntimeException(String.valueOf(code));
+            }
+        } catch (MalformedURLException me) {
+            //TODO logger.error();
+        } catch (URISyntaxException ue) {
+            //TODO logger.error();
+        } catch (IOException ioe) {
+            //TODO logger.error();
+        } catch (Exception e) {
+            //TODO logger.error();
+        }
+        return retStr;
     }
 }
