@@ -34,8 +34,6 @@ public class SamplePost {
                 respStr = EntityUtils.toString(entity, "UTF-8");
             }
             System.out.println("respStr = " + respStr);
-            // 释放资源
-            EntityUtils.consume(entity);
         } catch (Exception e) {
             e.printStackTrace();
         }

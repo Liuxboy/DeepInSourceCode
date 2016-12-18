@@ -1,17 +1,16 @@
 package com.github.liuxboy.httpclient.examples;
 
-import com.alibaba.fastjson.JSON;
 import org.apache.commons.codec.Charsets;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-import java.nio.charset.Charset;
+import java.io.IOException;
+
 
 /**
  * Package: com.github.liuxboy.httpclient <br>
@@ -21,6 +20,7 @@ import java.nio.charset.Charset;
  * Desc: 简单Get请求
  */
 public class SampleGet {
+
     public static void main(String[] args) {
         String url = "http://127.0.0.1:8051/services/getInfo?name=zhangsan&code=200";
         // 使用默认配置创建httpclient的实例
@@ -45,6 +45,12 @@ public class SampleGet {
             EntityUtils.consume(entity);
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                client.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
