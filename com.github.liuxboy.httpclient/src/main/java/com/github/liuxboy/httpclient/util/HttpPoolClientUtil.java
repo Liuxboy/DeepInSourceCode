@@ -27,6 +27,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.Args;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
@@ -100,23 +101,54 @@ public class HttpPoolClientUtil {
             .build();
 
     /**
-     * @param url 请求地址
+     * @param url 请求地址  not {@code null}
+     * @param map 请求参数map
+     * @return may be {@code null}
+     */
+    public static String getForObject(String url, final Map<String, String> map) {
+        List<NameValuePair> paramList = null;
+        if (map != null) {
+            paramList = new ArrayList<NameValuePair>();
+            for (Map.Entry<String, String> entry : map.entrySet()) {
+                paramList.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+            }
+        }
+        String retStr = null;
+        try {
+            //组装uri
+            URI uri = CollectionUtils.isNotEmpty(paramList)
+                    ? new URIBuilder(url).setParameters(paramList).build()
+                    : new URIBuilder(url).build();
+            HttpGet httpGet = new HttpGet(uri);
+            //返回处理器，处理异常，关闭流，管理连接等
+            ResponseHandler<String> responseHandler = new JsonResponseHandler();
+            //执行请求，并拿到结果
+            retStr = httpClient.execute(httpGet, responseHandler);
+        } catch (Exception e) {
+            log.error("HttpPoolClientUtil.getForObject has error:", e);
+        }
+        return retStr;
+    }
+
+    /**
+     * @param url 请求地址 not {@code null}
      * @param obj 参数对象
      * @return may be {@code null}
      */
     public static String postForJson(String url, Object obj) {
-        String content = JSON.toJSONString(obj);
+        Args.notNull(url, "url");
+        String content = obj != null ? JSON.toJSONString(obj) : null;
         return postForObject(url, ContentType.APPLICATION_JSON, content);
     }
 
     /**
-     * @param url      请求地址
+     * @param url      请求地址 not {@code null}
      * @param mimeType example: {@link ContentType#APPLICATION_JSON#getMimeType()}
      * @param paraMap  参数对象
      * @return may be {@code null}
      */
     public static String postForObject(String url, String mimeType, Map<String, String> paraMap) {
-        //默认APPLICATION_FORM_URLENCODED
+        Args.notNull(url, "url");
         ContentType contentType = ContentType.create(
                 ContentType.APPLICATION_FORM_URLENCODED.getMimeType()
                 , Charsets.UTF_8);
@@ -127,12 +159,13 @@ public class HttpPoolClientUtil {
     }
 
     /**
-     * @param url         请求地址
+     * @param url         请求地址 not {@code null}
      * @param contentType example: {@link ContentType#APPLICATION_JSON}
      * @param paraMap     请求参数Map
      * @return may be {@code null}
      */
     public static String postForObject(String url, ContentType contentType, Map<String, String> paraMap) {
+        Args.notNull(url, "url");
         if (MapUtils.isEmpty(paraMap)) {
             log.warn("HttpClient->postForObject map is empty");
             return null;
@@ -160,22 +193,23 @@ public class HttpPoolClientUtil {
             //执行请求，并拿到结果
             retStr = httpClient.execute(httpPost, responseHandler);
         } catch (Exception e) {
-            log.error("HttpPoolClientUtil.postForObject has error:", e);
+            log.error("HttpPoolClientUtil.postForObject by map has error:", e);
         }
         return retStr;
     }
 
     /**
-     * @param url         请求地址
-     * @param contentType example: {@link ContentType#APPLICATION_JSON}
+     * @param url         请求地址  not {@code null}
+     * @param contentType example: {@link ContentType#APPLICATION_JSON} not {@code null}
      * @param content     请求报文
      * @return may be {@code null}
      */
     public static String postForObject(String url, ContentType contentType, String content) {
+        Args.notNull(url, "url");
         String retStr = null;
         try {
             //组装StringEntity
-            HttpEntity httpEntity = new StringEntity(content, Charsets.UTF_8);
+            HttpEntity httpEntity = content != null ? new StringEntity(content, Charsets.UTF_8) : null;
             HttpPost httpPost = new HttpPost(url);
             httpPost.setEntity(httpEntity);
             if (null == contentType) {
@@ -189,37 +223,7 @@ public class HttpPoolClientUtil {
             //执行请求，并拿到结果
             retStr = httpClient.execute(httpPost, responseHandler);
         } catch (Exception e) {
-            log.error("HttpPoolClientUtil.postForObject has error:", e);
-        }
-        return retStr;
-    }
-
-    /**
-     * @param url 请求地址
-     * @param map 请求参数map
-     * @return may be {@code null}
-     */
-    public static String getForObject(String url, final Map<String, String> map) {
-        List<NameValuePair> paramList = null;
-        if (map != null) {
-            paramList = new ArrayList<NameValuePair>();
-            for (Map.Entry<String, String> entry : map.entrySet()) {
-                paramList.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
-            }
-        }
-        String retStr = null;
-        try {
-            //组装uri
-            URI uri = CollectionUtils.isNotEmpty(paramList)
-                    ? new URIBuilder(url).setParameters(paramList).build()
-                    : new URIBuilder(url).build();
-            HttpGet httpGet = new HttpGet(uri);
-            //返回处理器，处理异常，关闭流，管理连接等
-            ResponseHandler<String> responseHandler = new JsonResponseHandler();
-            //执行请求，并拿到结果
-            retStr = httpClient.execute(httpGet, responseHandler);
-        } catch (Exception e) {
-            log.error("HttpPoolClientUtil.getForObject has error:", e);
+            log.error("HttpPoolClientUtil.postForObject by String has error:", e);
         }
         return retStr;
     }
