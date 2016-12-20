@@ -1,4 +1,4 @@
-package com.github.liuxboy.httpclient.util;
+import com.github.liuxboy.httpclient.util.HttpPoolClientUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,21 +18,21 @@ public class MultiRequestHttpClient {
     };
     public static void main(String[] args) {
         final String getUrl = "http://127.0.0.1:8080/services/greeting/getGreeting?name=lcd";
-        for (int i = 0; i < 3000; i++) {
+        for (int i = 0; i < 2000; i++) {
             new Thread() {
                 @Override
                 public void run() {
-                    String resJson = HttpPoolClient.getForObject(getUrl, null);
+                    String resJson = HttpPoolClientUtil.getForObject(getUrl, null);
                 }
             }.start();
         }
 
         final String postUrl = "http://127.0.0.1:8080/services/greeting/postGreeting";
-        for (int i = 0; i < 3000; i++) {
+        for (int i = 0; i < 2000; i++) {
             new Thread() {
                 @Override
                 public void run() {
-                    String resJson = HttpPoolClient.postForJson(postUrl, map);
+                    String resJson = HttpPoolClientUtil.postForJson(postUrl, map);
                 }
             }.start();
         }
