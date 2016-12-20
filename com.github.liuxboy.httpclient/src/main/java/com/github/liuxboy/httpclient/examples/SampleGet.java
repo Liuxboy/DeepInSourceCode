@@ -1,10 +1,13 @@
 package com.github.liuxboy.httpclient.examples;
 
 import org.apache.commons.codec.Charsets;
+import org.apache.http.Header;
+import org.apache.http.HeaderElement;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
@@ -22,7 +25,7 @@ import java.io.IOException;
 public class SampleGet {
 
     public static void main(String[] args) {
-        String url = "http://127.0.0.1:8051/services/getInfo?name=zhangsan&code=200";
+        String url = "http://127.0.0.1:8080/getGreeting?name=zhangsan";
         // 使用默认配置创建httpclient的实例
         CloseableHttpClient client = HttpClients.createDefault();
         HttpGet get = new HttpGet(url);
@@ -37,6 +40,12 @@ public class SampleGet {
             HttpEntity entity = null;
             if (HttpStatus.SC_OK == statusCode) {
                 entity = response.getEntity();
+                Header header = entity != null ? entity.getContentType() : null;
+                for (HeaderElement headerElement : header.getElements()) {
+                    if (ContentType.APPLICATION_JSON.getMimeType().equals(headerElement.getName())){
+
+                    }
+                }
                 //如果约定请求返回为json字符中，那resp本身就是json格式的，无需再轩换
                 respStr = EntityUtils.toString(entity, Charsets.UTF_8);
             }

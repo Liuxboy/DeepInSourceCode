@@ -54,7 +54,7 @@ public class ClientWithRequestFuture {
         FutureRequestExecutionService requestExecService = new FutureRequestExecutionService(
                 httpclient, execService);
         try {
-            // Because things are asynchronous, you must provide a ResponseHandler
+            // Because things are asynchronous, you must provide a JsonResponseHandler
             ResponseHandler<Boolean> handler = new ResponseHandler<Boolean>() {
                 @Override
                 public Boolean handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
