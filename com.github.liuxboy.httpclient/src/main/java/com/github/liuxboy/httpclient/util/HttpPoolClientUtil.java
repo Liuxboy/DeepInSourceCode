@@ -149,12 +149,9 @@ public class HttpPoolClientUtil {
      */
     public static String postForObject(String url, String mimeType, Map<String, String> paraMap) {
         Args.notNull(url, "url");
-        ContentType contentType = ContentType.create(
-                ContentType.APPLICATION_FORM_URLENCODED.getMimeType()
-                , Charsets.UTF_8);
-        if (mimeType != null) {
-            contentType = ContentType.create(mimeType, Charsets.UTF_8);
-        }
+        ContentType contentType = (mimeType != null)
+                ? ContentType.create(mimeType, Charsets.UTF_8)
+                : ContentType.APPLICATION_JSON;
         return postForObject(url, contentType, paraMap);
     }
 
@@ -170,13 +167,11 @@ public class HttpPoolClientUtil {
             log.warn("HttpClient->postForObject map is empty");
             return null;
         }
-        if (null == contentType) {
-            contentType = ContentType.create(
-                    ContentType.APPLICATION_FORM_URLENCODED.getMimeType()
-                    , Charsets.UTF_8);
-        }
         String retStr = null;
         try {
+            contentType = (contentType != null)
+                    ? contentType
+                    : ContentType.APPLICATION_FORM_URLENCODED;
             //组装Entity
             List<NameValuePair> formParams = new ArrayList<NameValuePair>();
             for (Map.Entry<String, String> entry : paraMap.entrySet()) {
@@ -184,7 +179,8 @@ public class HttpPoolClientUtil {
             }
             HttpEntity httpEntity = EntityBuilder.create()
                     .setContentType(contentType)
-                    .setParameters(formParams).build();
+                    .setParameters(formParams)
+                    .build();
             HttpPost httpPost = new HttpPost(url);
             httpPost.setEntity(httpEntity);
 
@@ -208,16 +204,16 @@ public class HttpPoolClientUtil {
         Args.notNull(url, "url");
         String retStr = null;
         try {
+            contentType = (contentType != null)
+                    ? contentType
+                    : ContentType.APPLICATION_FORM_URLENCODED;
             //组装StringEntity
-            HttpEntity httpEntity = content != null ? new StringEntity(content, Charsets.UTF_8) : null;
+            HttpEntity httpEntity = EntityBuilder.create()
+                    .setContentType(contentType)
+                    .setText(content)
+                    .build();
             HttpPost httpPost = new HttpPost(url);
             httpPost.setEntity(httpEntity);
-            if (null == contentType) {
-                contentType = ContentType.create(
-                        ContentType.APPLICATION_FORM_URLENCODED.getMimeType()
-                        , Charsets.UTF_8);
-            }
-            httpPost.setHeader(MIME.CONTENT_TYPE, contentType.toString());
             //返回处理器，处理异常，关闭流，管理连接等
             ResponseHandler<String> responseHandler = new JsonResponseHandler();
             //执行请求，并拿到结果
