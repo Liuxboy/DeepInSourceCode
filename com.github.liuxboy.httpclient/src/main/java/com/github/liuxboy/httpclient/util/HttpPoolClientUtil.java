@@ -21,8 +21,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.entity.mime.MIME;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -142,11 +140,13 @@ public class HttpPoolClientUtil {
     }
 
     /**
+     * 此方式请求任何MIME类型，需要提供接口方支持对应的MIME类型才可使用
      * @param url      请求地址 not {@code null}
-     * @param mimeType example: {@link ContentType#APPLICATION_JSON#getMimeType()}
+     * @param mimeType example: {@link ContentType#APPLICATION_FORM_URLENCODED#getMimeType()}
      * @param paraMap  参数对象
      * @return may be {@code null}
      */
+    @Deprecated
     public static String postForObject(String url, String mimeType, Map<String, String> paraMap) {
         Args.notNull(url, "url");
         ContentType contentType = (mimeType != null)
@@ -156,11 +156,13 @@ public class HttpPoolClientUtil {
     }
 
     /**
+     * 此方式请求任何MIME类型，需要提供接口方支持对应的MIME类型才可使用
      * @param url         请求地址 not {@code null}
-     * @param contentType example: {@link ContentType#APPLICATION_JSON}
+     * @param contentType example: {@link ContentType#APPLICATION_FORM_URLENCODED}
      * @param paraMap     请求参数Map
      * @return may be {@code null}
      */
+    @Deprecated
     public static String postForObject(String url, ContentType contentType, Map<String, String> paraMap) {
         Args.notNull(url, "url");
         if (MapUtils.isEmpty(paraMap)) {
@@ -171,15 +173,20 @@ public class HttpPoolClientUtil {
         try {
             contentType = (contentType != null)
                     ? contentType
-                    : ContentType.APPLICATION_FORM_URLENCODED;
-            //组装Entity
+                    : ContentType.MULTIPART_FORM_DATA;
+            //组装UrlEncodedFormEntity
             List<NameValuePair> formParams = new ArrayList<NameValuePair>();
             for (Map.Entry<String, String> entry : paraMap.entrySet()) {
                 formParams.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
             }
             HttpEntity httpEntity = EntityBuilder.create()
                     .setContentType(contentType)
-                    .setParameters(formParams)
+                    .setParameters(formParams)  //form表单
+                    /*
+                    .setBinary()    TODO //二进制
+                    .setFile()      TODO //文件
+                    .setStream()    TODO //流
+                    */
                     .build();
             HttpPost httpPost = new HttpPost(url);
             httpPost.setEntity(httpEntity);

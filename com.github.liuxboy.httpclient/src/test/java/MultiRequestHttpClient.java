@@ -36,9 +36,7 @@ public class MultiRequestHttpClient {
                 @Override
                 public void run() {
                     String resJson = HttpPoolClientUtil.postForJson(postUrl, map);
-                    String resObj1 = HttpPoolClientUtil.postForObject(postUrl, ContentType.APPLICATION_JSON, map);
                     String resObj2 = HttpPoolClientUtil.postForObject(postUrl, ContentType.APPLICATION_JSON, JSON.toJSONString(map));
-                    String resObj3 = HttpPoolClientUtil.postForObject(postUrl, ContentType.APPLICATION_JSON.getMimeType(), map);
                 }
             }.start();
         }
