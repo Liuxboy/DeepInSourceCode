@@ -29,10 +29,11 @@ import org.apache.http.util.Args;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static javax.swing.UIManager.put;
 
 /**
  * Package: com.github.liuxboy.httpclient.util <br>
@@ -98,6 +99,12 @@ public class HttpPoolClientUtil {
             .setDefaultRequestConfig(requestConfig)
             .build();
 
+    private static Map testMap = new HashMap<String, String>() {
+            {
+                put("name", "lcd");
+            }
+        };
+
     /**
      * @param url 请求地址  not {@code null}
      * @param map 请求参数map
@@ -141,6 +148,7 @@ public class HttpPoolClientUtil {
 
     /**
      * 此方式请求任何MIME类型，需要提供接口方支持对应的MIME类型才可使用
+     *
      * @param url      请求地址 not {@code null}
      * @param mimeType example: {@link ContentType#APPLICATION_FORM_URLENCODED#getMimeType()}
      * @param paraMap  参数对象
@@ -157,6 +165,7 @@ public class HttpPoolClientUtil {
 
     /**
      * 此方式请求任何MIME类型，需要提供接口方支持对应的MIME类型才可使用
+     *
      * @param url         请求地址 not {@code null}
      * @param contentType example: {@link ContentType#APPLICATION_FORM_URLENCODED}
      * @param paraMap     请求参数Map
@@ -171,7 +180,7 @@ public class HttpPoolClientUtil {
         }
         String retStr = null;
         try {
-            contentType = (contentType != null)
+            contentType = contentType != null
                     ? contentType
                     : ContentType.MULTIPART_FORM_DATA;
             //组装UrlEncodedFormEntity
@@ -211,7 +220,7 @@ public class HttpPoolClientUtil {
         Args.notNull(url, "url");
         String retStr = null;
         try {
-            contentType = (contentType != null)
+            contentType = contentType != null
                     ? contentType
                     : ContentType.APPLICATION_FORM_URLENCODED;
             //组装StringEntity

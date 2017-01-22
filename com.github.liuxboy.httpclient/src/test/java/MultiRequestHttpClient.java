@@ -4,6 +4,7 @@ import org.apache.http.entity.ContentType;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.*;
 
 /**
  * Package: com.github.liuxboy.httpclient.util <br>
@@ -13,30 +14,23 @@ import java.util.Map;
  * Desc:
  */
 public class MultiRequestHttpClient {
-    final static Map<String, String> map = new HashMap<String, String>() {
+    private static Map testMap = new HashMap<String, String>() {
         {
             put("name", "lcd");
         }
     };
 
     public static void main(String[] args) {
-        final String getUrl = "http://127.0.0.1:8080/services/greeting/getGreeting?name=lcd";
-        for (int i = 0; i < 2000; i++) {
-            new Thread() {
-                @Override
-                public void run() {
-                    String resJson = HttpPoolClientUtil.getForObject(getUrl, null);
-                }
-            }.start();
-        }
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2000,
+                4000, 5, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 
-        final String postUrl = "http://127.0.0.1:8080/services/greeting/postGreeting";
         for (int i = 0; i < 2000; i++) {
             new Thread() {
                 @Override
                 public void run() {
-                    String resJson = HttpPoolClientUtil.postForJson(postUrl, map);
-                    String resObj2 = HttpPoolClientUtil.postForObject(postUrl, ContentType.APPLICATION_JSON, JSON.toJSONString(map));
+                    HttpPoolClientUtil.getForObject("http://127.0.0.1:8080/services/greeting/getGreeting?name=lcd", null);
+                    HttpPoolClientUtil.postForJson("http://127.0.0.1:8080/services/greeting/postGreeting", testMap);
+                    HttpPoolClientUtil.postForObject("http://127.0.0.1:8080/services/greeting/postGreeting", ContentType.APPLICATION_JSON, JSON.toJSONString(testMap));
                 }
             }.start();
         }
