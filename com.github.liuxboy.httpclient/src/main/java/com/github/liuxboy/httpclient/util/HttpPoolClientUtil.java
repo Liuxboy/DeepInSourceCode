@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import org.apache.commons.codec.Charsets;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -27,13 +28,13 @@ import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.Args;
 import org.apache.http.util.EntityUtils;
+import org.springframework.core.io.support.PropertiesLoaderUtils;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
 import java.util.*;
 
-import static javax.swing.UIManager.put;
 
 /**
  * Package: com.github.liuxboy.httpclient.util <br>
@@ -86,7 +87,27 @@ public class HttpPoolClientUtil {
      * !!具体设值需要根据实际部署结构进行最优调节!!
      */
     private static int maxConnPerRoute = 100;        //单个路由并发连接数
-
+    static {
+        try {
+            Properties prop = PropertiesLoaderUtils.loadAllProperties(File.separator
+                    + "conf"
+                    + File.separator
+                    + "httpclientpool.properties");
+            String socketTimeoutProperties = prop.getProperty("socket.timeout");
+            String connectTimeoutProperties = prop.getProperty("connect.timeout");
+            String connectionRequestTimeoutProperties = prop.getProperty("connection.request.timeout");
+            String maxConnTotalProperties = prop.getProperty("max.conn.total");
+            String maxConnPerRouteProperties = prop.getProperty("max.conn.per.route");
+            socketTimeout = NumberUtils.toInt(socketTimeoutProperties, socketTimeout);
+            connectTimeout = NumberUtils.toInt(connectTimeoutProperties, connectTimeout);
+            connectionRequestTimeout = NumberUtils.toInt(connectionRequestTimeoutProperties,
+                    connectionRequestTimeout);
+            maxConnTotal = NumberUtils.toInt(maxConnTotalProperties, maxConnPerRoute);
+            maxConnPerRoute = NumberUtils.toInt(maxConnPerRouteProperties, maxConnPerRoute);
+        } catch (Exception e) {
+            log.warn("HttpPoolClientUtil.init has error:", e);
+        }
+    }
     private static RequestConfig requestConfig = RequestConfig.custom()
             .setSocketTimeout(socketTimeout)
             .setConnectTimeout(connectTimeout)
@@ -98,12 +119,6 @@ public class HttpPoolClientUtil {
             .setMaxConnPerRoute(maxConnPerRoute)
             .setDefaultRequestConfig(requestConfig)
             .build();
-
-    private static Map testMap = new HashMap<String, String>() {
-            {
-                put("name", "lcd");
-            }
-        };
 
     /**
      * @param url 请求地址  not {@code null}
