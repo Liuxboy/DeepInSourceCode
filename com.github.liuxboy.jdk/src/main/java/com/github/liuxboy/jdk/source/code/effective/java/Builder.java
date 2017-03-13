@@ -6,10 +6,12 @@ package com.github.liuxboy.jdk.source.code.effective.java;
  */
 public class Builder {
 	//构建器
+	NutritionFacts2 nutritionFacts2 = new NutritionFacts2.Builder(1,2)
+			.sodium(1).calories(1).fat(1).build();
 }
 ///////////////////////////////////////////////////////////////////////////
 // Telescoping constructor pattern - does not scale well!
-class NutritionFacts {
+class NutritionFacts0 {
 	private final int servingSize; // (mL)  required
 	private final int servings; // (per container) required
 	private final int calories; //  optional
@@ -17,19 +19,19 @@ class NutritionFacts {
 	private final int sodium; // (mg) optional
 	private final int carbohydrate; // (g)  optional
 	
-	public NutritionFacts(int servingSize, int servings) {
+	public NutritionFacts0(int servingSize, int servings) {
 		this(servingSize, servings, 0);
 	}
-	public NutritionFacts(int servingSize, int servings,	int calories) {
+	public NutritionFacts0(int servingSize, int servings,	int calories) {
 		this(servingSize, servings, calories, 0);
 	}
-	public NutritionFacts(int servingSize, int servings, int calories, int fat) {
+	public NutritionFacts0(int servingSize, int servings, int calories, int fat) {
 		this(servingSize, servings, calories, fat, 0);
 	}
-	public NutritionFacts(int servingSize, int servings, int calories, int fat, int sodium) {
+	public NutritionFacts0(int servingSize, int servings, int calories, int fat, int sodium) {
 		this(servingSize, servings, calories, fat, sodium, 0);
 	}
-	public NutritionFacts(int servingSize, int servings,
+	public NutritionFacts0(int servingSize, int servings,
 		int calories, int fat, int sodium, int carbohydrate) {
 		this.servingSize = servingSize;
 		this.servings = servings;

@@ -25,14 +25,14 @@ public class MultiRequestHttpClient {
                 4000, 5, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 
         for (int i = 0; i < 2000; i++) {
-            new Thread() {
-                @Override
-                public void run() {
-                    HttpPoolClientUtil.getForObject("http://127.0.0.1:8080/services/greeting/getGreeting?name=lcd", null);
-                    HttpPoolClientUtil.postForJson("http://127.0.0.1:8080/services/greeting/postGreeting", testMap);
-                    HttpPoolClientUtil.postForObject("http://127.0.0.1:8080/services/greeting/postGreeting", ContentType.APPLICATION_JSON, JSON.toJSONString(testMap));
-                }
-            }.start();
+            threadPoolExecutor.execute(
+                    new Runnable() {
+                        public void run() {
+                            HttpPoolClientUtil.getForObject("http://127.0.0.1:8080/services/greeting/getGreeting?name=lcd", null);
+                            HttpPoolClientUtil.postForJson("http://127.0.0.1:8080/services/greeting/postGreeting", testMap);
+                            HttpPoolClientUtil.postForObject("http://127.0.0.1:8080/services/greeting/postGreeting", ContentType.APPLICATION_JSON, JSON.toJSONString(testMap));
+                        }
+                    });
         }
     }
 }
