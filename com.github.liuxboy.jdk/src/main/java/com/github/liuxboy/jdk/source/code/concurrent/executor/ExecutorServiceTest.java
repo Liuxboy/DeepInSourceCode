@@ -1,8 +1,6 @@
 package com.github.liuxboy.jdk.source.code.concurrent.executor;
 
-import java.util.concurrent.AbstractExecutorService;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.*;
 
 /**
  * Package: com.github.liuxboy.jdk.source.code.concurrent.executor <br>
@@ -12,9 +10,11 @@ import java.util.concurrent.ExecutorService;
  * Desc:
  */
 public class ExecutorServiceTest {
-    Executor executor; //接口只有一个方法，就是execute执行
+    Executor executor;
     ExecutorService executorService;
     AbstractExecutorService abstractExecutorService;
+    ThreadPoolExecutor threadPoolExecutor;
+    Executors executors;
     public static void main(String[] args) {
 
     }
