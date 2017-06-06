@@ -28,5 +28,13 @@ public class CopyOnWriteTest {
         copyOnWriteArraySet.add(2);
         copyOnWriteArraySet.add(3);
         copyOnWriteArraySet.add(1);
+
+        copyOnWriteMap.put("1", "NiHao");
+        copyOnWriteMap.put("2", "HeHe");
+        copyOnWriteMap.put("3", "HaHa");
+
+        copyOnWriteMap.get("1");
+
+
     }
 }
