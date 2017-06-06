@@ -1,4 +1,4 @@
-package com.github.liuxboy.jdk.source.code.concurrent.creat.newthread;
+package com.github.liuxboy.jdk.source.code.concurrent.newthread;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;

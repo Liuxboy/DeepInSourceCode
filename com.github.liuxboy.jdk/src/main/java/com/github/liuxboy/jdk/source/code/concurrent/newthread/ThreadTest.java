@@ -1,4 +1,4 @@
-package com.github.liuxboy.jdk.source.code.concurrent.creat.newthread;
+package com.github.liuxboy.jdk.source.code.concurrent.newthread;
 
 /**
  * Created In www.jdpay.com

@@ -10,12 +10,16 @@ import java.util.concurrent.*;
  * Desc:
  */
 public class ExecutorServiceTest {
-    Executor executor;
-    ExecutorService executorService;
-    AbstractExecutorService abstractExecutorService;
-    ThreadPoolExecutor threadPoolExecutor;
-    Executors executors;
+    private static Executor executor;
+    private static ExecutorService executorService;
+    private static AbstractExecutorService abstractExecutorService;
+    private static ThreadPoolExecutor threadPoolExecutor;
+    private static Executors executors;
     public static void main(String[] args) {
-
+        executorService = Executors.newSingleThreadExecutor();
+        executorService = Executors.newCachedThreadPool();
+        executorService = Executors.newFixedThreadPool(10);
+        executorService = Executors.newScheduledThreadPool(10);
     }
+
 }
