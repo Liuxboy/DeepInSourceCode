@@ -1,29 +1,27 @@
 package com.github.liuxboy.jdk.source.code.nio;// $Id$
 
-import java.io.*;
-import java.nio.*;
-import java.nio.channels.*;
+import java.io.FileOutputStream;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 
-public class WriteSomeBytes
-{
-  static private final byte message[] = { 83, 111, 109, 101, 32,
-                                          98, 121, 116, 101, 115, 46 };
+public class WriteSomeBytes {
+    static private final byte message[] = {83, 111, 109, 101, 32, 98, 121, 116, 101, 115, 46};
 
-  static public void main( String args[] ) throws Exception {
-    FileOutputStream fout = new FileOutputStream( "writesomebytes.txt" );
+    static public void main(String args[]) throws Exception {
+        FileOutputStream fout = new FileOutputStream("D:\\GitSpace\\DeepInSourceCode\\com.github.liuxboy.jdk\\src\\main\\resources\\rest\\outfile.txt");
 
-    FileChannel fc = fout.getChannel();
+        FileChannel fc = fout.getChannel();
 
-    ByteBuffer buffer = ByteBuffer.allocate( 1024 );
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
 
-    for (int i=0; i<message.length; ++i) {
-      buffer.put( message[i] );
+        for (int i = 0; i < message.length; ++i) {
+            buffer.put(message[i]);
+        }
+
+        buffer.flip();
+
+        fc.write(buffer);
+
+        fout.close();
     }
-
-    buffer.flip();
-
-    fc.write( buffer );
-
-    fout.close();
-  }
 }

@@ -1,3 +1,5 @@
+package com.github.liuxboy.jdk.source.code.java.puzzlers.puzzlers.with.character.puzzle23;
+
 import java.util.*;
 
 public class Rhymes {
