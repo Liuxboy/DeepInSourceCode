@@ -1,3 +1,5 @@
+package com.github.liuxboy.jdk.source.code.java.puzzlers.more.library.puzzlers.puzzle79;
+
 public class Pet {
     public final String name;
     public final String food;
@@ -15,7 +17,7 @@ public class Pet {
     public void play() {
         System.out.println(name + ": " + sound + " " + sound);
     }
-    public void sleep() {
+    public void sleep$() {
         System.out.println(name + ": Zzzzzzz...");
     }
 
@@ -25,7 +27,7 @@ public class Pet {
                 while (true) {
                     eat();
                     play();
-                    sleep();
+                    sleep$();
                 }
             }
         }.start();

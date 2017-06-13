@@ -1,5 +1,7 @@
 package com.github.liuxboy.jdk.source.code.collection;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,13 +12,15 @@ import java.util.List;
  * <p>Time: 2016/1/7 12:10</p>
  * <p>Description: 说明 </p>
  *
- * @author wyliuchundong
+ * @author liuchundong
  * @version 0.0.1
  */
 public class String2List {
 
     private static List<String> str2List(String masterIds) {
-        String[] strings = masterIds.split(",");
+        if (StringUtils.isEmpty(masterIds))
+            return null;
+        String[] strings = masterIds.trim().split(",");
         return Arrays.asList(strings);
     }
 

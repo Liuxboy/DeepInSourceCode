@@ -18,7 +18,8 @@ public class CopyFile {
 
         FileChannel fileChannel;    //Channel是既可读，又可写数据结构
         ByteBuffer buffer = ByteBuffer.allocate(1024);
-
+        long startTime = System.currentTimeMillis();
+        System.out.println("拷贝文件开始:");
         while (true) {
             fileChannel = fin.getChannel();     //in
             buffer.clear(); //将buffer的position = 0，limit = capacity,准备读入数据
@@ -30,5 +31,6 @@ public class CopyFile {
             fileChannel = fout.getChannel();    //out
             fileChannel.write(buffer);
         }
+        System.out.println("拷贝文件结束,共耗时:" + (System.currentTimeMillis() - startTime));
     }
 }

@@ -1,4 +1,6 @@
-import static java.util.Arrays.toString;
+package com.github.liuxboy.jdk.source.code.java.puzzlers.classier.puzzlers.puzzle71;
+
+import java.util.Arrays;
 
 class ImportDuty {
     public static void main(String[] args) {
@@ -6,6 +8,8 @@ class ImportDuty {
     }
 
     static void printArgs(Object... args) {
-        System.out.println(toString(args));
+        System.out.println(Arrays.toString(args));
     }
+
+
 }

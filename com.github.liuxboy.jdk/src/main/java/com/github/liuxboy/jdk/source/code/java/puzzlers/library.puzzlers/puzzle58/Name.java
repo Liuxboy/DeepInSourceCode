@@ -1,3 +1,5 @@
+package com.github.liuxboy.jdk.source.code.java.puzzlers.library.puzzlers.puzzle58;
+
 import java.util.*;
 
 public class Name {

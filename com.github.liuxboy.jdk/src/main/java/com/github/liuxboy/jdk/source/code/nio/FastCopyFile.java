@@ -7,22 +7,17 @@ import java.nio.channels.FileChannel;
 
 public class FastCopyFile {
     static public void main(String args[]) throws Exception {
-        if (args.length < 2) {
-            System.err.println("Usage: java FastCopyFile infile outfile");
-            System.exit(1);
-        }
-
-        String infile = args[0];
-        String outfile = args[1];
+        String infile = "D:\\GitSpace\\DeepInSourceCode\\com.github.liuxboy.jdk\\src\\main\\resources\\rest\\infile.txt";
+        String outfile = "D:\\GitSpace\\DeepInSourceCode\\com.github.liuxboy.jdk\\src\\main\\resources\\rest\\outfile.txt";
 
         FileInputStream fin = new FileInputStream(infile);
         FileOutputStream fout = new FileOutputStream(outfile);
 
         FileChannel fcin = fin.getChannel();
         FileChannel fcout = fout.getChannel();
-
         ByteBuffer buffer = ByteBuffer.allocateDirect(1024);
-
+        long startTime = System.currentTimeMillis();
+        System.out.println("拷贝文件开始:");
         while (true) {
             buffer.clear();
 
@@ -36,5 +31,6 @@ public class FastCopyFile {
 
             fcout.write(buffer);
         }
+        System.out.println("拷贝文件结束,共耗时:" + (System.currentTimeMillis() - startTime));
     }
 }

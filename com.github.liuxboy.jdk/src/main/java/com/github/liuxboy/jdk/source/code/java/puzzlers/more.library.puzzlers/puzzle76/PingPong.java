@@ -1,3 +1,5 @@
+package com.github.liuxboy.jdk.source.code.java.puzzlers.more.library.puzzlers.puzzle76;
+
 public class PingPong {
     public static synchronized void main(String[] a) {
         Thread t = new Thread() {

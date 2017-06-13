@@ -1,3 +1,5 @@
+package com.github.liuxboy.jdk.source.code.java.puzzlers.loopy.puzzlers.puzzle35;
+
 public class Clock {
     public static void main(String[] args) {
         int minutes = 0;
