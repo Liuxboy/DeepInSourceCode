@@ -2,6 +2,7 @@ package com.github.liuxboy.jdk.source.code.java.puzzlers.classy.puzzlers.puzzle5
 
 public class Type2 {
     public static void main(String[] args) {
-        System.out.println(new Type2() instanceof String);
+        Type2 type2 = new Type2();
+        //System.out.println(type2 instanceof String);
     }
 }

@@ -16,14 +16,8 @@ public class CollectionSubtract {
     public static void main(String[] args) {
         List<Person> personList = new ArrayList<>();
         personList.add(new Person("lcd", 30, true));
-        //personList.add(new Person("lcd", 30, true));
         personList.add(new Person("zw", 26, true));
         personList.add(new Person("wj", 24, false));
-        /*personList.stream()
-                .filter(o -> o.isMale())
-                .sorted((Person o1, Person o2) -> o1.getAge() > o2.getAge() ? 1 : (o1.getAge() == o2.getAge()) ? 0 : -1)
-                .distinct() //重写了hashCode与equals才能去重的
-                .forEach(System.out::println);*/
 
         List<Person> hasExistPerson = new ArrayList<>();
         hasExistPerson.add(new Person("lcd", 30, true));

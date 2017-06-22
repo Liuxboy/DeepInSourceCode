@@ -86,14 +86,15 @@ public class TreeUtils {
             }
         }
     }
-}
 
-class Node {
-    String id;
-    String parentId;
-    int level;
+    class Node {
+        String id;
+        String parentId;
+        int level;
 
-    public Node(String id) {
-        this.id = id;
+        public Node(String id) {
+            this.id = id;
+        }
     }
 }
+

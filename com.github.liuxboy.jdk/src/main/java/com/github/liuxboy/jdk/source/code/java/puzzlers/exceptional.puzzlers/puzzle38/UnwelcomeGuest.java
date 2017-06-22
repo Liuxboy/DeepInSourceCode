@@ -3,7 +3,7 @@ package com.github.liuxboy.jdk.source.code.java.puzzlers.exceptional.puzzlers.pu
 public class UnwelcomeGuest {
     public static final long GUEST_USER_ID = -1;
 
-    private static final long USER_ID;
+    private static long USER_ID;
     static {
         try {
             USER_ID = getUserIdFromEnvironment();

@@ -5,7 +5,7 @@ class Base {
 }
 
 class Derived extends Base {
-    private String className = "Derived";
+    public String className = "Derived";
 }
 
 public class PrivateMatter {

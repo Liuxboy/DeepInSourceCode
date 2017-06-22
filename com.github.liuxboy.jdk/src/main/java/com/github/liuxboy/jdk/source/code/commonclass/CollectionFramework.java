@@ -38,16 +38,6 @@ public class CollectionFramework<E> {
     Stack<?> stack;
     Hashtable<?, ?> ht;
     Enumeration enumeration;
-    /**
-     * 并发包
-     */
-    ConcurrentHashMap concurrentHashMap;
-    ConcurrentLinkedQueue concurrentLinkedQueue;
-    ConcurrentNavigableMap concurrentNavigableMap;
-    ConcurrentMap concurrentMap;
-    ConcurrentSkipListMap concurrentSkipListMap;
-    ConcurrentSkipListSet concurrentSkipListSet;
-    IdentityHashMap identityHashMap;
 
     public static void main(String[] args){
         HashMap<String,String> hashMap1 = new HashMap<String,String>();

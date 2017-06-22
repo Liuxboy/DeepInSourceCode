@@ -1,3 +1,5 @@
+package com.github.liuxboy.jdk.source.code.java.puzzlers.library.puzzlers.puzzle60;
+
 import java.util.*;
 
 public class OneLiners {
@@ -23,21 +25,21 @@ public class OneLiners {
 
     // Part A
     static <E> List<E> withoutDuplicates(List<E> original) {
-        // Your code goes here
+        return new ArrayList(new HashSet<>(original));
     }
 
     // Part B
     static String[] parse(String string) {
-        // Your code goes here
+        return null;
     }
 
     // Part C
     static String arrayToString(Object[] array) {
-        // Your code goes here
+        return null;
     }
 
     // Part D
     static boolean hasMoreBitsSet(int i, int j) {
-        // Your code goes here
+        return false;
     }
 }
