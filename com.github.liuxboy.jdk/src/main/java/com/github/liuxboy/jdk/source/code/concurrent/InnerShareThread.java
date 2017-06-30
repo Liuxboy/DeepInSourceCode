@@ -1,15 +1,13 @@
-package com.github.liuxboy.jdk.source.code.concurrent.notify;
+package com.github.liuxboy.jdk.source.code.concurrent;
 
 /**
- * Package: com.github.liuxboy.jdk.source.code.concurrent.notify <br>
+ * Package: com.github.liuxboy.jdk.source.code.concurrent <br>
  * Author: liuchundong <br>
- * Date: 2017/6/21 <br>
- * Time: 11:25 <br>
- * Desc: 程序设置三个线程，线程A,B,C，三个线程分别打印a,b,c，怎样能实现打印出来的结果是
- * abcabcabc........
+ * Date: 2017/6/23 <br>
+ * Time: 10:49 <br>
+ * Desc:
  */
-public class OrderedNotify {
-
+public class InnerShareThread {
     public static void main(String[] args) {
         Mythread mythread = new Mythread();
         mythread.getThread().start();
@@ -17,12 +15,11 @@ public class OrderedNotify {
         mythread.getThread().start();
         mythread.getThread().start();
     }
-
 }
 
 class Mythread {
     int index = 0;
-
+    //静态内部类共享index
     private class InnerThread extends Thread {
         public synchronized void run() {
             while (true) {
