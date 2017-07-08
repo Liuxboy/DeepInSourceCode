@@ -13,6 +13,7 @@
         <module>com.github.liuxboy.jdk</module>
         <module>com.github.liuxboy.dom4j</module>
         <module>com.github.liuxboy.spring</module>
+        <module>com.github.liuxboy.zookeeper</module>
         <module>com.github.liuxboy.httpclient</module>
         <module>com.github.liuxboy.interview</module>
         <module>net.jcip.example</module>

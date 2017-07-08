@@ -1,6 +1,9 @@
 package com.github.liuxboy.jdk.source.code.collection;
 
+import sun.misc.Unsafe;
+
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Package: com.github.liuxboy.jdk.source.code.collection <br>
@@ -11,7 +14,11 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ConcurrentHashMapAtJ8 {
     public static void main(String[] args) {
-        ConcurrentHashMap concurrentHashMap = new ConcurrentHashMap(2);
+        Class clazz = AtomicInteger.class;
+        Unsafe unsafe = Unsafe.getUnsafe();
+
+        AtomicInteger atomicInteger = new AtomicInteger(0);
+        /*ConcurrentHashMap concurrentHashMap = new ConcurrentHashMap(2);
         Person[] persons = new Person[10];
         persons[0] = new Person("刘亲", 27, true);
         persons[1] = new Person("张强", 27, true);
@@ -21,6 +28,6 @@ public class ConcurrentHashMapAtJ8 {
         concurrentHashMap.put("2", persons[1]);
         concurrentHashMap.put("3", persons[2]);
         System.out.println(concurrentHashMap.size());
-        System.out.println(concurrentHashMap.toString());
+        System.out.println(concurrentHashMap.toString());*/
     }
 }
