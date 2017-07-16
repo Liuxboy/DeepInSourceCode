@@ -1,6 +1,9 @@
 package com.github.liuxboy.jdk.source.code.collection;
 
 import java.util.*;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @param <E>
@@ -38,6 +41,11 @@ public class CollectionFramework<E> {
     Enumeration enumeration;
 
     public static void main(String[] args) {
+        //testArrayList();
+        traceTheArrayListGrow();
+    }
+
+    private static void testArrayList() {
         HashMap<String, String> hashMap1 = new HashMap<String, String>();
         HashMap<String, Person> hashMap2 = new HashMap<String, Person>(100, 0.8f);
         Person[] persons = new Person[10];
@@ -54,5 +62,22 @@ public class CollectionFramework<E> {
         hashMap2.put("three", persons[2]);
         hashMap2.put("four", persons[3]);
         System.out.println(hashMap1.put("第一个1", "梅西"));//打印的是第一个值"刘春花"
+    }
+
+    /**
+     * 查询ArrayList的扩容原理
+     */
+    private static void traceTheArrayListGrow() {
+        ArrayList<String> stringArrayList = new ArrayList<>(1);
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        for (int i = 0; i < 10; i++) {
+            executorService.execute(
+                    () -> {
+                        stringArrayList.add("LCD");
+                        stringArrayList.add("ZW");
+                        stringArrayList.add("XX");
+                    });
+        }
+        System.out.println(stringArrayList);
     }
 }

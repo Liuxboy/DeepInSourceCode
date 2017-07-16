@@ -70,5 +70,6 @@ public class DateTimeUtil {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        System.out.println(System.currentTimeMillis());
     }
 }
