@@ -5,7 +5,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.ServerSocket;
-import java.net.Socket;
 
 /**
  * Package: com.github.liuxboy.jdk.source.code.serializable <br>
