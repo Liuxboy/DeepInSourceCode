@@ -1,4 +1,4 @@
-package com.github.liuxboy.jdk.source.code.interview.java.other;
+package com.github.liuxboy.interview.code;
 
 /**
  * Created In www.jdpay.com

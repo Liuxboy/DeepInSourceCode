@@ -1,4 +1,4 @@
-package com.github.liuxboy.jdk.source.code.interview.java;
+package com.github.liuxboy.interview.code;
 
 import java.io.EOFException;
 import java.io.FileNotFoundException;

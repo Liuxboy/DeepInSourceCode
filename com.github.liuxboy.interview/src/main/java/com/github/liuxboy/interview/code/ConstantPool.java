@@ -1,6 +1,4 @@
-package com.github.liuxboy.jdk.source.code.interview.java.constantpool;
-
-import com.github.liuxboy.jdk.source.code.interview.java.other.Other;
+package com.github.liuxboy.interview.code;
 
 /**
  * Created with IntelliJ IDEA13.0
@@ -78,7 +76,7 @@ public class ConstantPool {
         //在同包不同类下，引用自同一String对象.
         System.out.print((Other.hello == hello) + " ");
         //在不同包不同类下，引用自同一String对象.
-        System.out.print((com.github.liuxboy.jdk.source.code.interview.java.other.Other.hello == hello) + " ");
+        System.out.print((Other.hello == hello) + " ");
         //在编译成.class能识别为同一字符串的，自动优化成常量，放入常量池，所以也引用自同一对象.
         System.out.print((hello == ("Hel"+"lo")) + " ");
         //在运行时创建的字符串具有独立的内存地址，所以不引用自同一对象.

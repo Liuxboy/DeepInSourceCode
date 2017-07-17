@@ -1,4 +1,4 @@
-package com.github.liuxboy.jdk.source.code.interview.java;
+package com.github.liuxboy.interview.code;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;

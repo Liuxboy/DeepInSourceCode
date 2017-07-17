@@ -1,4 +1,4 @@
-package com.github.liuxboy.jdk.source.code.interview.java;
+package com.github.liuxboy.interview.code;
 /**
  * @author 刘春东
  * @version 0.1
