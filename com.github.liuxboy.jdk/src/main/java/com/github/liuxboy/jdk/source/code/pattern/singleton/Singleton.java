@@ -112,7 +112,7 @@ class InnerStaticSingleton {
     private InnerStaticSingleton() {
     }
 
-    public static final InnerStaticSingleton getInstance() {
+    public static InnerStaticSingleton getInstance() {
         return LazyHolder.INSTANCE;
     }
 }
@@ -121,24 +121,5 @@ enum EnumSingleton {
     INSTANCE;
 
     public void dosomething() {
-
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
