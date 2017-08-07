@@ -22,15 +22,15 @@ public class Stack {
         if (top == null) {
             return null;
         } else {
-            LinkNode temp = new LinkNode<>(top.getData());
-            top = top.getNext();
+            LinkNode temp = new LinkNode<>(top.data);
+            top = top.next;
             return temp;
         }
     }
 
     public void push(LinkNode<Integer> n) {
         if (n != null) {
-            n.setNext(top);
+            n.next = top;
             top = n;
         }
     }

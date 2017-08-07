@@ -16,15 +16,15 @@ public class Queue {
             first = n;
             last = first;
         } else {
-            last.setNext(n);
+            last.next = n;
             last = n;
         }
     }
 
     public LinkNode dequeue() {
         if (first != null) {
-            LinkNode temp = new LinkNode<>(first.getData());
-            first = first.getNext();
+            LinkNode temp = new LinkNode<>(first.data);
+            first = first.next;
             return temp;
         }
         return null;
