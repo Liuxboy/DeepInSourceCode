@@ -15,7 +15,7 @@ import java.util.function.Predicate;
  */
 public class LambdaExpression {
     public static void main(String[] args) {
-        Function function = (Function<String, Integer>) s -> {
+        Function function = (Function<String, Integer>) (s) -> {
             if (NumberUtils.isDigits(s)) {
                 return Integer.valueOf(s);
             }
@@ -23,7 +23,7 @@ public class LambdaExpression {
         };
         System.out.println(function.apply("20"));
 
-        Consumer consumer = o -> {
+        Consumer consumer = (o) -> {
             if (o instanceof String) {
                 System.out.println(o);
             }
@@ -31,13 +31,10 @@ public class LambdaExpression {
         };
         consumer.accept("I am a consumer");
 
-        Predicate predicate = new Predicate() {
-            @Override
-            public boolean test(Object o) {
-                if (o instanceof String)
-                    return true;
-                return false;
-            }
+        Predicate predicate = (o) -> {
+            if (o instanceof String)
+                return true;
+            return false;
         };
         System.out.println(predicate.test("I am a String"));
     }

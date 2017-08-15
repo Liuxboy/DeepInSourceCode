@@ -43,5 +43,47 @@ public class StrategyTest {
 
         context = new Context(new StrategyImplB());
         context.execute();
+
+        context = new Context(new StrategyImplC());
+        context.execute();
     }
 }
+interface IStrategy {
+    void doSomething();
+}
+
+class Context {
+    private IStrategy strategy;
+
+    public Context(IStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void execute() {
+        strategy.doSomething();
+    }
+}
+
+class StrategyImplA implements IStrategy {
+    @Override
+    public void doSomething() {
+        System.out.println("实现策略A：");
+    }
+}
+
+class StrategyImplB implements IStrategy {
+    @Override
+    public void doSomething() {
+        System.out.println("实现策略B：");
+    }
+}
+
+class StrategyImplC implements IStrategy {
+    @Override
+    public void doSomething() {
+        System.out.println("实现策略C：");
+    }
+}
+
+
+

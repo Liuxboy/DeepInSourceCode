@@ -54,6 +54,7 @@
         <guava.version>18.0</guava.version>
         <zookeeper.version>3.4.10</zookeeper.version>
         <jedis.version>2.9.0</jedis.version>
+        <cglib.version>3.1</cglib.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -68,7 +69,12 @@
                 <version>${jedis.version}</version>
                 <scope>compile</scope>
             </dependency>
-
+            <!-- https://mvnrepository.com/artifact/cglib/cglib -->
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib.version}</version>
+            </dependency>
             <!-- 外部依赖包 -->
             <dependency>
                 <groupId>org.springframework</groupId>

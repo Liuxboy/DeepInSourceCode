@@ -7,7 +7,7 @@ package com.github.liuxboy.jdk.source.code.jdk8;
  * Time: 17:27 <br>
  * Desc:
  */
-interface OneInterface {
+interface Interface {
     default void aDefaultMethod() {
         System.out.println("Java8的接口能实现一个默认方法");
     }
@@ -25,13 +25,13 @@ interface OneInterface {
     }
 }
 
-public class OneInterfaceImpl implements OneInterface {
+public class InterfaceImpl implements Interface {
     public static void main(String[] args) {
-        OneInterfaceImpl oneInterface = new OneInterfaceImpl();
+        InterfaceImpl oneInterface = new InterfaceImpl();
         oneInterface.aDefaultMethod();
         oneInterface.anotherDefaultMethod();
-        OneInterface.aStaticMethod();
-        OneInterface.anotherStaticMethod();
+        Interface.aStaticMethod();
+        Interface.anotherStaticMethod();
     }
 
 }
