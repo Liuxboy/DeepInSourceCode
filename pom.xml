@@ -18,6 +18,7 @@
         <module>com.github.liuxboy.interview</module>
         <module>net.jcip.example</module>
         <module>art.concurrent.book</module>
+        <module>understanding.jvm</module>
     </modules>
 
     <properties>
