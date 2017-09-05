@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="MyApp" packages="">
+	<Appenders>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d %p %c{1.} [%t] %m%n"/>
+		</Console>
+		<Kafka name="Kafka" topic="dubbo">
+			<PatternLayout pattern="%date %message"/>
+			<Property name="bootstrap.servers">10.112.156.132:9092</Property>
+		</Kafka>
+	</Appenders>
+	<Loggers>
+		<Root level="trace">
+			<AppenderRef ref="STDOUT"/>
+			<AppenderRef ref="Kafka"/>
+		</Root>
+	</Loggers>
+</Configuration>
