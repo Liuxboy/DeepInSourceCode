@@ -1,4 +1,4 @@
-package understanding.jvm.chapter02;
+package understanding.the.jvm.chapter02;
 
 /**
  * Package: understanding.jvm.chapter02 <br>

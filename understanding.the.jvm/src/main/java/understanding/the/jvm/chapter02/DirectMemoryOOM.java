@@ -1,4 +1,4 @@
-package understanding.jvm.chapter02;
+package understanding.the.jvm.chapter02;
 
 import sun.misc.Unsafe;
 
