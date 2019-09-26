@@ -4,7 +4,6 @@ import org.apache.commons.lang3.StringUtils;
 import redis.clients.jedis.Jedis;
 
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
 

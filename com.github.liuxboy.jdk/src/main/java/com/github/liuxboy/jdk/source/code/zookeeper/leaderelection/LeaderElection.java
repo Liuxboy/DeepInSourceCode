@@ -1,7 +1,7 @@
-package com.github.liuxboy.zookeeper.leaderelection;
+package com.github.liuxboy.jdk.source.code.zookeeper.leaderelection;
 
-import com.github.liuxboy.zookeeper.TestMainClient;
-import com.github.liuxboy.zookeeper.TestMainServer;
+import com.github.liuxboy.jdk.source.code.zookeeper.TestMainClient;
+import com.github.liuxboy.jdk.source.code.zookeeper.TestMainServer;
 import org.apache.log4j.Logger;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;

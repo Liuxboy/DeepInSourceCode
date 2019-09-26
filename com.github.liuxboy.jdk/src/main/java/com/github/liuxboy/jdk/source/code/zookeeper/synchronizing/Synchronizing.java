@@ -1,14 +1,14 @@
-package com.github.liuxboy.zookeeper.synchronizing;
+package com.github.liuxboy.jdk.source.code.zookeeper.synchronizing;
 
 
-import com.github.liuxboy.zookeeper.TestMainClient;
+import com.github.liuxboy.jdk.source.code.zookeeper.TestMainClient;
+import com.github.liuxboy.jdk.source.code.zookeeper.TestMainServer;
 import org.apache.log4j.Logger;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.ZooDefs.Ids;
 import org.apache.zookeeper.data.Stat;
-import com.github.liuxboy.zookeeper.TestMainServer;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -109,4 +109,5 @@ public class Synchronizing extends TestMainClient {
         }
     }
 }
+
 
