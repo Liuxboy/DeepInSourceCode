@@ -37,7 +37,7 @@
         <logback-version>1.0.13</logback-version>
 
         <org.mybatis.spring.version>1.1.1</org.mybatis.spring.version>
-        <org.mybatis.version>3.1.1</org.mybatis.version>
+        <org.mybatis.version>3.5.6</org.mybatis.version>
         <ojdbc-version>11.2.0</ojdbc-version>
         <commons-lang3.vsersion>3.4</commons-lang3.vsersion>
         <commons-collection.vsersion>3.2.1</commons-collection.vsersion>
