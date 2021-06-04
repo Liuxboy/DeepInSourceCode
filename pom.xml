@@ -47,7 +47,7 @@
         <junit.version>4.11</junit.version>
         <servlet.version>2.5</servlet.version>
 
-        <httpclient.version>4.5.2</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
         <fluent-hc.version>4.5.2</fluent-hc.version>
         <httpmime.version>4.5.2</httpmime.version>
         <httpclient-cache.version>4.5.2</httpclient-cache.version>
