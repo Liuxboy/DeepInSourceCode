@@ -23,7 +23,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- 外部包版本 -->
-        <version.spring>4.1.5.RELEASE</version.spring>
+        <version.spring>5.2.20.RELEASE</version.spring>
         <servlet-api.version>2.5</servlet-api.version>
         <jstl.version>1.2</jstl.version>
         <apache.poi.version>3.11</apache.poi.version>
